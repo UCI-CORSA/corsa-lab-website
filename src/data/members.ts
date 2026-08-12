@@ -54,6 +54,7 @@ export const MEMBERS = {
     email: 'sitaoh@uci.edu',
     position: 'Faculty',
     currentPosition: 'Assistant Professor, CORSA Lab Director',
+    img: 'sitao_square-1024x1024.jpg',
   },
   haochengxu: {
     firstName: 'Haocheng',

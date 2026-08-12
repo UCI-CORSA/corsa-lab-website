@@ -60,8 +60,29 @@ const HeroMessage = styled.p`
   color: ${Color.gray700};
   text-align: left;
   max-width: 100%;
+  margin-bottom: 16px;
   @media (max-width: ${ScreenSize.md}) {
     text-align: center;
+  }
+`
+
+const HeroContact = styled.p`
+  ${FontVariant.body_md}
+  color: ${Color.gray700};
+  text-align: left;
+  max-width: 100%;
+  @media (max-width: ${ScreenSize.md}) {
+    text-align: center;
+  }
+`
+
+const ContactLink = styled.a`
+  color: ${Color.orange900};
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
   }
 `
 
@@ -95,9 +116,21 @@ export const HeroSection = () => {
           </HeroSubtitle>
           <HeroMessage>
             We are a group of passionate researchers at EECS, School of Engineering, UC Irvine, working on exciting
-            research projects related to hardware acceleration systems, programming languages and compiler design,
-            computer architecture, and machine learning algorithm and model compression techniques.
+            research projects related to CORSA: Compiler Optimizations, Reconfigurable and Scalable Architectures.
           </HeroMessage>
+          <HeroMessage>
+            We focus on the development of highly efficient and user-friendly hardware acceleration systems. Our core
+            areas of expertise encompass the design of cutting-edge programming languages and compilers tailored for
+            hardware accelerators, as well as the envisioning of next-generation computer architectures.
+            Additionally, we are committed to exploring and implementing highly efficient machine learning algorithms
+            and model compression techniques. Moreover, our research extends to innovative hardware-aware neural
+            architecture search and the integration of hardware/software co-design flow. Through these pursuits, we
+            aim to advance the frontiers of technology and contribute to the advancement of the field.
+          </HeroMessage>
+          <HeroContact>
+            If you are interested in opportunities at CORSA Lab, please contact Prof. Sitao Huang (
+            <ContactLink href="mailto:sitaoh@uci.edu">sitaoh@uci.edu</ContactLink>).
+          </HeroContact>
         </HeroTextArea>
         {/* TODO: replace with a real CORSA Lab group photo once one is available */}
         <HeroImageContainer id="hero-image-container">CORSA</HeroImageContainer>
