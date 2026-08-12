@@ -28,7 +28,17 @@ const ProjectImageContainer = styled.div`
 
 const ProjectTitle = styled.h2`
   ${FontVariant.title_md}
-  color: ${Color.orange900};
+  color: ${Color.gray900};
+  display: grid;
+
+  /* Small orange accent bar above the title */
+  &::before {
+    content: '';
+    justify-self: left;
+    border: 3px solid ${Color.orange900};
+    width: 40px;
+    margin-bottom: 8px;
+  }
 `
 
 const ProjectDescription = styled.p`
@@ -39,7 +49,7 @@ const ProjectDescription = styled.p`
 export default function Page() {
   return (
     <main>
-      <h1>Research Projects</h1>
+      <h1>Research</h1>
       <ProjectList>
         {RESEARCH_PROJECTS.map((project, index) => (
           <ProjectCard key={project.title}>

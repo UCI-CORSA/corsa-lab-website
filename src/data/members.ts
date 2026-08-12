@@ -4,7 +4,7 @@ export const LabPositions = [
   'M.S. Student',
   'Visiting Researcher',
   'Past Researcher',
-  'Undergrad Student',
+  'Undergraduate Student',
 ] as const
 export type LabPositionTypes = (typeof LabPositions)[number]
 
@@ -53,7 +53,7 @@ export const MEMBERS = {
     lastName: 'Huang',
     email: 'sitaoh@uci.edu',
     position: 'Faculty',
-    currentPosition: 'Assistant Professor, CORSA Lab Director',
+    currentPosition: 'Assistant Professor, Lab Director',
     img: 'sitao_square-1024x1024.jpg',
   },
   haochengxu: {
@@ -158,7 +158,7 @@ export const MEMBERS = {
   donghyeokpark: {
     firstName: 'DongHyeok',
     lastName: 'Park',
-    position: 'Undergrad Student',
+    position: 'Undergraduate Student',
   },
 } as const satisfies Record<string, Member>
 

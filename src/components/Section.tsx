@@ -17,7 +17,7 @@ export const SectionTitle = styled.h2`
   margin: 0;
   margin-bottom: 12px;
   ${FontVariant.title_md}
-  color: ${Color.orange900};
+  color: ${Color.gray900};
 `
 
 export const SectionContent = styled.div`

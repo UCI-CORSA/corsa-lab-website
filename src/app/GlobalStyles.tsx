@@ -77,6 +77,7 @@ export default function GlobalStyles() {
           margin: 0;
           ${FontVariant.title_lg}
           text-align: center;
+          color: ${Color.gray900};
         }
 
         *:focus-visible {

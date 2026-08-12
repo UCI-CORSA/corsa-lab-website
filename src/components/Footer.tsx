@@ -10,7 +10,7 @@ const FooterContainer = styled.footer`
   justify-content: space-between;
   align-items: flex-start;
   padding: 36px 48px;
-  background-color: ${Color.gray600};
+  background-color: ${Color.gray900};
   margin-top: auto;
 
   @media (max-width: 768px) {

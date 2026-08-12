@@ -54,6 +54,12 @@ export const Logo = styled(Link)`
   gap: 8px;
 `
 
+// TODO: replace LogoMark with an <Image src="/images/logo.png" .../> once an official CORSA Lab logo is available
+const LogoMark = styled.span`
+  color: ${Color.orange900};
+  font-weight: 700;
+`
+
 const NavRow = styled.div`
   display: block;
   @media (max-width: ${ScreenSize.sm}) {
@@ -171,7 +177,7 @@ const NavList = [
   { navItem: 'Home', path: '/' },
   { navItem: 'People', path: '/people' },
   { navItem: 'Publications', path: '/publications' },
-  { navItem: 'Projects', path: '/research' },
+  { navItem: 'Research', path: '/research' },
   { navItem: 'News', path: '/news' },
 ]
 
@@ -215,7 +221,7 @@ export const NavBar = () => {
       <NavContainer>
         <Nav>
           <Logo href="/">
-            <span style={{ color: Color.orange900, fontWeight: 700 }}>CORSA</span>
+            <LogoMark>CORSA</LogoMark>
             <ResponsiveSpan>Lab</ResponsiveSpan>
           </Logo>
 

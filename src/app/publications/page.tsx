@@ -1,6 +1,6 @@
 'use client'
 
-import { ScreenSize, linearlyScaleSize } from '@/app/theme'
+import { Color, ScreenSize, linearlyScaleSize } from '@/app/theme'
 import { Divider } from '@/components/Divider'
 import { Filter } from '@/components/Filter'
 import { PublicationCard } from '@/components/Publication/PublicationCard'
@@ -63,6 +63,11 @@ const SideContainer = styled.div`
 const Filters = styled.div`
   display: flex;
   gap: 12px;
+`
+
+// Years/preprints act as small accent labels here, distinct from the People page's section headings
+const YearTitle = styled(SectionTitle)`
+  color: ${Color.orange900};
 `
 
 const preprintKey = 'Preprint'
@@ -146,7 +151,7 @@ export default function Page() {
                       sectionRefs.current[sectionName] = el
                     }}
                   >
-                    <SectionTitle>{sectionName}</SectionTitle>
+                    <YearTitle>{sectionName}</YearTitle>
                     <SectionContent>
                       {publicationList[sectionName].map((pub, index) => (
                         <PublicationCard key={pub.title} pub={pub} />

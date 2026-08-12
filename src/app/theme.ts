@@ -8,15 +8,15 @@ const textVariant = (size: `${number}px`, weight: number) => css`
 export const Color = {
   white: '#FFFFFF',
   black: '#000000',
-  gray900: '#252525',
+  gray900: '#1F2937', // main heading / primary text (dark charcoal)
   gray800: '#464646',
-  gray700: '#666666',
+  gray700: '#6B7280', // secondary / muted text
   gray600: '#7A7A7A',
   gray500: '#A3A3A3',
   gray400: '#C2C2C2',
-  gray300: '#E4E4E4',
+  gray300: '#E5E7EB', // border / divider
   gray200: '#F1F1F1',
-  gray100: '#F6F6F6',
+  gray100: '#F7F8FA', // light section background
   gray50: '#FBFBFB',
   orange900: '#FF6F00',
   orange800: '#FF8F00',
