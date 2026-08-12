@@ -64,8 +64,7 @@ const Role = styled.span`
 `
 
 export const AlumniCard = ({ mem, showRole }: { mem: Member; showRole?: boolean }) => {
-  const role =
-    mem.position === 'Postdoc Researcher' ? '(Postdoc)' : mem.position === 'Ph.D. Student' ? '(Ph.D.)' : ''
+  const role = mem.position === 'Ph.D. Student' ? '(Ph.D.)' : ''
 
   return (
     <AlumniCardContainer>

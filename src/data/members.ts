@@ -1,12 +1,10 @@
 export const LabPositions = [
   'Faculty',
-  'Postdoc Researcher',
   'Ph.D. Student',
   'M.S. Student',
   'Visiting Researcher',
   'Past Researcher',
-  'Undergrad Intern',
-  'Staff',
+  'Undergrad Student',
 ] as const
 export type LabPositionTypes = (typeof LabPositions)[number]
 
@@ -155,6 +153,11 @@ export const MEMBERS = {
     firstName: 'Kuan-Hsun',
     lastName: 'Wang',
     position: 'M.S. Student',
+  },
+  donghyeokpark: {
+    firstName: 'DongHyeok',
+    lastName: 'Park',
+    position: 'Undergrad Student',
   },
 } as const satisfies Record<string, Member>
 

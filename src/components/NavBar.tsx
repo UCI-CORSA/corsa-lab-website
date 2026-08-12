@@ -171,6 +171,7 @@ const NavList = [
   { navItem: 'Home', path: '/' },
   { navItem: 'People', path: '/people' },
   { navItem: 'Publications', path: '/publications' },
+  { navItem: 'Projects', path: '/research' },
   { navItem: 'News', path: '/news' },
 ]
 

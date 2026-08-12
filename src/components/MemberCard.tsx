@@ -169,7 +169,7 @@ export const MemberCard = ({ member, mode = ProfileMode.DEFAULT }: Props) => {
         </Name>
         <Affiliation>
           {member.currentPosition ||
-            ((member.position === 'Visiting Researcher' || member.position === 'Undergrad Intern') &&
+            ((member.position === 'Visiting Researcher' || member.position === 'Undergrad Student') &&
               member.affiliation)}
         </Affiliation>
         <Buttons>

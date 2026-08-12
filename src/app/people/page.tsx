@@ -126,50 +126,6 @@ export default function Page() {
           >
             <SectionTitle id="alumni">Alumni</SectionTitle>
             {LabPositions.map(position => {
-              // group Ph.D. students and Postdocs together under "Ph.D. / Postdoc" section
-              if (position === 'Ph.D. Student') {
-                return null
-              }
-              if (position === 'Postdoc Researcher') {
-                const postdocs = ALUMNI_MEMBERS_BY_POSITION['Postdoc Researcher'] || []
-                const phds = ALUMNI_MEMBERS_BY_POSITION['Ph.D. Student'] || []
-                const combined = [...postdocs, ...phds]
-                if (combined.length > 0) {
-                  const seasonOrder = ['Fall', 'Summer', 'Spring', 'Winter']
-                  combined.sort((a, b) => {
-                    const aIsAlumni = a.isAlumni ?? false
-                    const bIsAlumni = b.isAlumni ?? false
-                    const aEndYear = aIsAlumni ? a.endYear ?? a.startYear ?? 3000 : 3000
-                    const bEndYear = bIsAlumni ? b.endYear ?? b.startYear ?? 3000 : 3000
-                    const aEndSeason = aIsAlumni ? a.endSeason ?? a.startSeason ?? 'Winter' : 'Winter'
-                    const bEndSeason = bIsAlumni ? b.endSeason ?? b.startSeason ?? 'Winter' : 'Winter'
-                    if (aEndYear !== bEndYear) {
-                      return bEndYear - aEndYear
-                    }
-                    const seasonA = seasonOrder.indexOf(aEndSeason)
-                    const seasonB = seasonOrder.indexOf(bEndSeason)
-                    if (seasonA !== seasonB) {
-                      return seasonA - seasonB
-                    }
-                    if (a.lastName === b.lastName) {
-                      return a.firstName.localeCompare(b.firstName)
-                    }
-                    return a.lastName.localeCompare(b.lastName)
-                  })
-                  return (
-                    <React.Fragment key="Ph.D. / Postdoc">
-                      <SubCategoryTitle>Ph.D. / Postdoc</SubCategoryTitle>
-                      <AlumniSectionContent>
-                        {combined.map((alumnus, i) => (
-                          <AlumniCard key={i} mem={alumnus} showRole={true} />
-                        ))}
-                      </AlumniSectionContent>
-                    </React.Fragment>
-                  )
-                }
-                return null
-              }
-
               // group Visiting Researchers and Past Researchers together under "Past Researcher"
               if (position === 'Past Researcher') {
                 return null
