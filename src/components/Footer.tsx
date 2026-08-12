@@ -3,6 +3,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Color, FontVariant, FontSize, FontWeight } from '@/app/theme'
 
 const FooterContainer = styled.footer`
@@ -85,12 +86,15 @@ export const Footer = () => {
         </FooterText>
       </FooterTextContainer>
       <FooterLogoContainer>
-        <FooterText href="https://engineering.uci.edu/dept/eecs" target="_blank">
-          UCI EECS
-        </FooterText>
-        <FooterText href="https://engineering.uci.edu" target="_blank">
-          UCI School of Engineering
-        </FooterText>
+        <Link href="https://engineering.uci.edu/" target="_blank">
+          <Image
+            src="/images/uci_engineering_wordmark_white.png"
+            alt="UCI Samueli School of Engineering"
+            width={2515}
+            height={858}
+            style={{ height: '72px', width: 'auto' }}
+          />
+        </Link>
       </FooterLogoContainer>
     </FooterContainer>
   )

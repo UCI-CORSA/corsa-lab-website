@@ -2,16 +2,17 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from '@emotion/styled'
 
-import { FontVariant, Color, ScreenSize, linearlyScaleSize } from '@/app/theme'
+import { Color, ScreenSize, linearlyScaleSize } from '@/app/theme'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface Props {
   children: string
   href: string
   selected: boolean
 }
-export const NAV_BAR_HEIGHT = 56
+export const NAV_BAR_HEIGHT = 84
 
 export const Nav = styled.nav`
   display: flex;
@@ -21,7 +22,7 @@ export const Nav = styled.nav`
   align-items: center;
 
   // Prevent the logo from suddenly jumping to the left when shrinking the window
-  padding: 12px 24px 12px
+  padding: 10px 24px 10px
     ${linearlyScaleSize({
       minSizePx: 24,
       maxSizePx: 96,
@@ -47,17 +48,17 @@ const NavContainer = styled.div`
 
 export const Logo = styled(Link)`
   text-decoration: none;
-  ${FontVariant.title_sm}
-  color: ${Color.gray900};
   display: flex;
-  align-items: end;
-  gap: 8px;
+  align-items: center;
 `
 
-// TODO: replace LogoMark with an <Image src="/images/logo.png" .../> once an official CORSA Lab logo is available
-const LogoMark = styled.span`
-  color: ${Color.orange900};
-  font-weight: 700;
+const LogoImage = styled(Image)`
+  height: 64px;
+  width: auto;
+
+  @media (max-width: ${ScreenSize.sm}) {
+    height: 48px;
+  }
 `
 
 const NavRow = styled.div`
@@ -166,12 +167,6 @@ const HamburgerLine = styled.span`
   z-index: 1;
 `
 
-const ResponsiveSpan = styled.span`
-  @media (max-width: ${ScreenSize.md}) {
-    display: none;
-  }
-`
-
 // Close the dropdown menu whenever the user clicks outside of the dropdown menu area
 const NavList = [
   { navItem: 'Home', path: '/' },
@@ -221,8 +216,7 @@ export const NavBar = () => {
       <NavContainer>
         <Nav>
           <Logo href="/">
-            <LogoMark>CORSA</LogoMark>
-            <ResponsiveSpan>Lab</ResponsiveSpan>
+            <LogoImage src="/images/logo.svg" alt="CORSA Lab" width={374} height={118} priority unoptimized />
           </Logo>
 
           <NavRow>
