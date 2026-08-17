@@ -4,7 +4,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Color, FontVariant, FontSize, FontWeight } from '@/app/theme'
+import { Color } from '@/app/theme'
 
 const FooterContainer = styled.footer`
   display: flex;
@@ -18,43 +18,6 @@ const FooterContainer = styled.footer`
     flex-direction: column;
     align-items: center;
     text-align: center;
-  }
-`
-
-const FooterTextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-
-  @media (max-width: 768px) {
-    align-items: center;
-  }
-`
-
-const FooterText = styled(Link)`
-  ${FontVariant.body_md}
-  color: ${Color.white};
-  text-decoration: none;
-  margin: 0;
-
-  &:hover {
-    text-decoration: underline;
-  }
-
-  @media (max-width: 768px) {
-    margin: 4px 0;
-  }
-`
-
-const FooterTextBold = styled.p`
-  font-size: ${FontSize.body_md};
-  font-weight: ${FontWeight.body_lg};
-  color: ${Color.white};
-  text-decoration: none;
-  margin: 0;
-
-  @media (max-width: 768px) {
-    margin: 4px 0;
   }
 `
 
@@ -72,19 +35,18 @@ const FooterLogoContainer = styled.div`
 export const Footer = () => {
   return (
     <FooterContainer>
-      <FooterTextContainer>
-        <FooterTextBold>Visit Us</FooterTextBold>
-        <FooterText
-          href="https://www.google.com/maps/search/?api=1&query=Engineering+Hall,+University+of+California,+Irvine"
-          target="_blank"
-        >
-          Engineering Hall 3225,
-          <br />
-          University of California, Irvine
-          <br />
-          Irvine, CA 92697
-        </FooterText>
-      </FooterTextContainer>
+      <Link
+        href="https://www.google.com/maps/search/?api=1&query=Engineering+Hall,+University+of+California,+Irvine"
+        target="_blank"
+      >
+        <Image
+          src="/images/corsa_official_logo.png"
+          alt="CORSA Research Lab @ UCI"
+          width={360}
+          height={104}
+          style={{ height: '64px', width: 'auto' }}
+        />
+      </Link>
       <FooterLogoContainer>
         <Link href="https://engineering.uci.edu/" target="_blank">
           <Image

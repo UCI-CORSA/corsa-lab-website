@@ -9,7 +9,7 @@ import EmotionRegistry from '@/app/EmotionRegistry'
 const notoSans = Noto_Sans({ subsets: ['latin'], weight: ['400', '700'] })
 
 const description =
-  'CORSA Lab (Compiler Optimization and Reconfigurable Scalable Architectures) is a research group in the Department of EECS, School of Engineering at UC Irvine, working on hardware acceleration systems, compiler and programming language design, computer architecture, and machine learning model compression.'
+  'CORSA Lab (Compiler Optimizations, Reconfigurable and Scalable Architectures) is a research group in the Department of EECS, School of Engineering at UC Irvine, working on hardware acceleration systems, compiler and programming language design, computer architecture, and machine learning model compression.'
 
 export const metadata: Metadata = {
   title: 'CORSA Lab',

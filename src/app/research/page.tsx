@@ -31,11 +31,11 @@ const ProjectTitle = styled.h2`
   color: ${Color.gray900};
   display: grid;
 
-  /* Small orange accent bar above the title */
+  /* Small accent bar above the title */
   &::before {
     content: '';
     justify-self: left;
-    border: 3px solid ${Color.orange900};
+    border: 3px solid ${Color.blue900};
     width: 40px;
     margin-bottom: 8px;
   }

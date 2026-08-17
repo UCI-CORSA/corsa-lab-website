@@ -96,11 +96,11 @@ export const NavUl = styled.ul`
 
 const Anchor = styled(Link)<{ selected: boolean }>`
   text-decoration: none;
-  color: ${props => (props.selected ? Color.orange900 : Color.gray600)};
-  box-shadow: ${props => (props.selected ? `0px 1px 0px 0px ${Color.orange900}` : null)};
+  color: ${props => (props.selected ? Color.blue900 : Color.gray700)};
+  box-shadow: ${props => (props.selected ? `0px 1px 0px 0px ${Color.blue900}` : null)};
   &:hover {
     cursor: pointer;
-    color: ${Color.orange900};
+    color: ${Color.blue900};
   }
 `
 
@@ -137,7 +137,7 @@ const HamburgerButton = styled.input`
   display: none;
 
   &:checked + label > span {
-    background: ${Color.orange800};
+    background: ${Color.blue800};
   }
 `
 
@@ -216,7 +216,7 @@ export const NavBar = () => {
       <NavContainer>
         <Nav>
           <Logo href="/">
-            <LogoImage src="/images/logo.svg" alt="CORSA Lab" width={374} height={118} priority unoptimized />
+            <LogoImage src="/images/corsa_logo.png" alt="CORSA Lab" width={215} height={93} priority />
           </Logo>
 
           <NavRow>

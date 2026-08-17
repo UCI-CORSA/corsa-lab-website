@@ -7,7 +7,7 @@ import Link from 'next/link'
 export const URL = styled(Link)`
   display: flex;
   align-items: center;
-  background-color: ${Color.orange100};
+  background-color: ${Color.blue100};
   text-decoration: none;
   ${FontVariant.body_sm}
   padding: ${Padding.y} ${Padding.x};
@@ -51,10 +51,10 @@ export const URL = styled(Link)`
   }
 
   &:hover {
-    background-color: ${Color.orange200};
+    background-color: ${Color.blue200};
   }
 
   &:active {
-    background-color: ${Color.orange300};
+    background-color: ${Color.blue300};
   }
 `

@@ -23,7 +23,7 @@ const NewsSection = styled.div`
 const NewsLine = styled.div`
   width: 2px;
   height: 100%;
-  background-color: ${Color.orange900};
+  background-color: ${Color.blue900};
   position: absolute;
   left: 50%;
   top: 0;
@@ -33,7 +33,7 @@ const NewsLine = styled.div`
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: ${Color.orange900};
+    background-color: ${Color.blue900};
     position: absolute;
     left: 50%;
     top: 0;

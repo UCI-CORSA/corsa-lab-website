@@ -77,7 +77,7 @@ const HeroContact = styled.p`
 `
 
 const ContactLink = styled.a`
-  color: ${Color.orange900};
+  color: ${Color.blue900};
   font-weight: 700;
   text-decoration: none;
 
@@ -94,7 +94,7 @@ const HeroImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: ${Color.gray200};
-  color: ${Color.orange900};
+  color: ${Color.blue900};
   ${FontVariant.title_xl}
   font-weight: 700;
   @media (max-width: ${ScreenSize.md}) {
@@ -109,10 +109,10 @@ export const HeroSection = () => {
       <HeroContainer>
         <HeroTextArea id="hero-text-area">
           <HeroTitle>
-            WELCOME TO <span style={{ color: `${Color.orange900}`, paddingRight: '7px' }}>CORSA LAB</span>!
+            WELCOME TO <span style={{ color: `${Color.blue900}`, paddingRight: '7px' }}>CORSA LAB</span>!
           </HeroTitle>
           <HeroSubtitle>
-            <strong style={{ fontWeight: '700' }}>Compiler Optimization and Reconfigurable Scalable Architectures</strong>
+            <strong style={{ fontWeight: '700' }}>Compiler Optimizations, Reconfigurable and Scalable Architectures</strong>
           </HeroSubtitle>
           <HeroMessage>
             We are a group of passionate researchers at EECS, School of Engineering, UC Irvine, working on exciting

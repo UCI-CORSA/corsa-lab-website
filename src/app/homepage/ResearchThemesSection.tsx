@@ -21,8 +21,8 @@ const ResearchTopicItem = styled.div`
   border: thin solid ${Color.gray500};
   border-radius: 15px;
   &:hover {
-    box-shadow: 0px 0px 10px 0px ${Color.orange700};
-    border: thin solid ${Color.orange700};
+    box-shadow: 0px 0px 10px 0px ${Color.blue700};
+    border: thin solid ${Color.blue700};
   }
   transition: box-shadow 0.3s ease-in-out;
 `

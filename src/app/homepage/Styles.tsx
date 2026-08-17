@@ -55,7 +55,7 @@ const Title = styled.h2`
   &:before {
     content: '';
     justify-self: left;
-    border: 4px solid ${Color.orange900}; // careful of margins (8px needs to be 4px here)
+    border: 4px solid ${Color.blue900}; // careful of margins (8px needs to be 4px here)
     width: 48px;
     margin-bottom: 8px;
   }

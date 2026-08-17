@@ -159,7 +159,7 @@ export const NewsModal = ({ post, onClose }: Props) => {
                 </CategoryContainer>
                 <Title>{post.title}</Title>
               </div>
-              <CloseButton onClick={onClose} />
+              <CloseButton onClick={onClose} aria-label="Close" />
             </Header>
 
             <NewsDate style={{ marginBottom: '8px' }}>{post.date.toDateString()}</NewsDate>

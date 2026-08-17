@@ -44,5 +44,5 @@ const LabMember = styled.span`
 `
 
 const NotLabMember = styled.span`
-  color: ${Color.gray500};
+  color: ${Color.gray700};
 `

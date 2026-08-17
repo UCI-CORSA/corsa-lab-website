@@ -5,10 +5,10 @@ import { FontVariant, Color, ScreenSize } from '@/app/theme'
 import { Post } from '@/data/posts'
 
 export const categoryColors: { [key: string]: string } = {
-  publication: Color.orange900,
-  award: Color.orange700,
-  position: Color.orange600,
-  news: Color.orange500,
+  publication: Color.blue900,
+  award: '#1C3D6D',
+  position: '#002244',
+  news: '#017CAA', // darkened from #0283B3 so white label text meets 4.5:1 contrast
 }
 
 const PostContainer = styled.div`
@@ -61,7 +61,7 @@ const Summary = styled.div`
 
 export const ReadMoreButton = styled.button`
   ${FontVariant.body_md}
-  color: ${Color.orange900};
+  color: ${Color.blue900};
   cursor: pointer;
   text-decoration: none;
   background-color: transparent;
@@ -78,7 +78,7 @@ export const ReadMoreButton = styled.button`
 const TimelineDot = styled.div<{ labelsOnLeft?: boolean }>`
   width: 6.4%;
   height: 2px;
-  background-color: ${Color.orange900};
+  background-color: ${Color.blue900};
   position: absolute;
   left: ${props => (props.labelsOnLeft ? 'calc(-3.2%)' : 'calc(100% + 3.2%)')};
   top: 28px;

@@ -23,11 +23,11 @@ const SidebarLink = styled(Link)`
   ${FontVariant.body_md}
 
   &.active {
-    color: ${Color.orange900};
+    color: ${Color.blue900};
   }
 
   &:hover {
-    color: ${Color.orange900};
+    color: ${Color.blue900};
     text-decoration: underline;
   }
 `

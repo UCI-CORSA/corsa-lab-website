@@ -67,41 +67,29 @@ const Buttons = styled.div`
   margin-top: 12px;
 `
 
-const EmailButton = styled.a`
-  content: url('/images/email.svg');
+// Icon is a real <img> child (not CSS content: url()) so it renders consistently in Safari,
+// which doesn't support the content property on non-generated elements.
+const IconButton = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 30px;
   height: 30px;
-  padding: 7px;
   cursor: pointer;
 
   color: ${Color.white};
   background-color: ${Color.gray700};
   border-radius: 50%;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
 `
 
-const WebsiteButton = styled.a`
-  content: url('/images/website.svg');
-  width: 30px;
-  height: 30px;
-  padding: 6px;
-  cursor: pointer;
-
-  color: ${Color.white};
-  background-color: ${Color.gray700};
-  border-radius: 50%;
-`
-
-const ThesisButton = styled.a`
-  content: url('/images/thesis.svg');
-  width: 30px;
-  height: 30px;
-  padding: 7px;
-  cursor: pointer;
-
-  color: ${Color.white};
-  background-color: ${Color.gray700};
-  border-radius: 50%;
-`
+const EmailButton = IconButton
+const WebsiteButton = IconButton
+const ThesisButton = IconButton
 
 interface Props {
   member: Member
@@ -142,7 +130,7 @@ export const MemberCard = ({ member, mode = ProfileMode.DEFAULT }: Props) => {
           width={180}
           height={180}
           src={originalSrc}
-          alt={member.firstName}
+          alt={`${member.firstName} ${member.lastName}`}
         />
         {hasHover && (
           <MemberImage
@@ -153,7 +141,7 @@ export const MemberCard = ({ member, mode = ProfileMode.DEFAULT }: Props) => {
             width={180}
             height={180}
             src={`/${hoverSrc}`}
-            alt={member.firstName}
+            alt={`${member.firstName} ${member.lastName}`}
             style={{
               opacity: isHovered ? 1 : 0,
               transition: 'opacity 0.3s ease-in-out',
@@ -173,9 +161,26 @@ export const MemberCard = ({ member, mode = ProfileMode.DEFAULT }: Props) => {
               member.affiliation)}
         </Affiliation>
         <Buttons>
-          {member.email && <EmailButton href={`mailto:${member.email}`} />}
-          {member.site && <WebsiteButton href={member.site} target="_blank" rel="noopener noreferrer" />}
-          {member.msThesis && <ThesisButton href={member.msThesis} />}
+          {member.email && (
+            <EmailButton href={`mailto:${member.email}`} aria-label={`Email ${member.firstName} ${member.lastName}`}>
+              <img src="/images/email.svg" alt="" />
+            </EmailButton>
+          )}
+          {member.site && (
+            <WebsiteButton
+              href={member.site}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${member.firstName} ${member.lastName}'s website`}
+            >
+              <img src="/images/website.svg" alt="" />
+            </WebsiteButton>
+          )}
+          {member.msThesis && (
+            <ThesisButton href={member.msThesis} aria-label={`${member.firstName} ${member.lastName}'s M.S. thesis`}>
+              <img src="/images/thesis.svg" alt="" />
+            </ThesisButton>
+          )}
         </Buttons>
       </Info>
     </Card>

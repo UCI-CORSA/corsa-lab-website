@@ -46,7 +46,7 @@ const CurrentPosition = styled.div`
 
 const Period = styled.span`
   ${FontVariant.body_md}
-  color: ${Color.gray500};
+  color: ${Color.gray700};
 `
 const Education = styled.span`
   ${FontVariant.body_md}

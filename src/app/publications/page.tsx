@@ -67,7 +67,7 @@ const Filters = styled.div`
 
 // Years/preprints act as small accent labels here, distinct from the People page's section headings
 const YearTitle = styled(SectionTitle)`
-  color: ${Color.orange900};
+  color: ${Color.blue900};
 `
 
 const preprintKey = 'Preprint'
