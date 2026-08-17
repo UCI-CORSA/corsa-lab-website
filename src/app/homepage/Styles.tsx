@@ -29,7 +29,7 @@ export const FlexContainer = styled.div<{ direction?: 'row' | 'column'; gap?: st
   flex-direction: ${props => props.direction || 'row'};
   gap: ${props => props.gap || '0px'}
   align-items: center;
-  max-width: 100vw;
+  max-width: 100%;
   justify-content: space-evenly;
 `
 
@@ -84,7 +84,7 @@ export const FullWidthContainer: React.FC<Props> = ({ style, children }) => {
   return (
     <div
       style={{
-        width: '100vw',
+        width: '100%',
         backgroundColor: Color.gray100,
         ...style,
       }}
