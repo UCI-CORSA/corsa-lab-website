@@ -23,7 +23,7 @@ interface Props {
   firstName: string
   lastName: string
   email?: string
-  position: LabPositionTypes
+  position: LabPositionTypes // must exactly match one of LabPositions above: 'Faculty' | 'Ph.D. Student' | 'M.S. Student' | 'Visiting Researcher' | 'Past Researcher' | 'Undergraduate Student'
   img?: string
   hoverImg?: Partial<Record<ProfileModeKey, string>>
   site?: string

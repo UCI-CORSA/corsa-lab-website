@@ -1,7 +1,7 @@
 interface Props {
   title: string
   date: Date
-  categories: readonly string[]
+  categories: readonly string[] // existing categories: 'publication' | 'award' | 'position' | 'news' (colors defined in categoryColors, src/components/NewsCard.tsx — add a color there if you introduce a new category)
   summary: string
   contentMdFilePath?: string // Add path to markdown file if exists. Path should be relative to /public/posts/
   endsAt?: Date // Add if the post has a deadline

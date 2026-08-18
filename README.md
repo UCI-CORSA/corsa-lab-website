@@ -62,19 +62,28 @@ Please avoid committing directly to the `main` branch. Instead, create a separat
 
 1. Go to `src/data/members.ts`.
 
-2. Add a new entry at the top of `MEMBERS`. Follow the format indicated in `interface Props`.
+2. Add a new entry anywhere in `MEMBERS` (position in the array doesn't matter — the site automatically sorts members by position, then end date, then name). Follow the format indicated in `interface Props`.
 
 3. Use the key format `[firstName][lastName]`, without middle names or aliases.
 
    Example:
 
    ```text
-   Alex Tio Suryapranata -> alexsuryapranata
+   John David Smith -> johnsmith
    ```
 
 4. For the profile picture, use an image with a 1:1 aspect ratio, consistent with the existing member images. A suggested size is 500x500 px.
 
 5. Place the image inside `public/members/` and make sure the filename exactly matches the value entered in the `img` field in `members.ts`, including the file extension.
+
+6. To add a former member instead of a current one, also set the following fields so they show up under "Alumni" instead of their `position` section:
+
+   ```typescript
+   isAlumni: true,
+   endYear: 2024, // year they left the lab (used for sorting, newest first)
+   endSeason: 'Spring', // season they left: 'Winter' | 'Spring' | 'Summer' | 'Fall'
+   currentPosition: 'Software Engineer at Google', // shown on their alumni card
+   ```
 
 ### News
 
@@ -99,9 +108,23 @@ Please avoid committing directly to the `main` branch. Instead, create a separat
 
 4. For co-authors or authors with equal contribution, group them into an array within the `authors` field. Asterisks will appear next to their names to indicate equal contribution.
 
+5. In the `topics` field, pick one or more existing keys from the `ResearchTopics` object defined near the top of the file:
+
+   ```typescript
+   topics: ['compiler', 'fpga']
+   ```
+
+   To introduce a brand-new research topic (not just tag a paper with an existing one), add a new entry to `ResearchTopics` itself (with an emoji and label). It will then automatically show up in the Publications page filter and the homepage's "Research Themes" section — no other changes needed.
+
+### Research
+
+1. Go to `src/data/research.ts`.
+2. Add a new entry to `RESEARCH_PROJECTS`. Follow the format indicated in `interface Props`.
+3. Place the project image inside `public/images/research/` and make sure the filename exactly matches the `image` field.
+
 ## Development
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a Google Font.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Noto Sans, a Google Font.
 
 ## Attribution
 
