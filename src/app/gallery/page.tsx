@@ -55,9 +55,9 @@ export default function GalleryPage() {
       <Row>
         {GROUPPHOTOS.map(img => (
           <Col key={img.filename}>
-            <Link href={`/group/${img.filename}`} target="_blank" rel="noopener noreferrer">
+            <Link href={`/images/group/${img.filename}`} target="_blank" rel="noopener noreferrer">
               <StyledImage
-                src={`/group/${img.filename}`}
+                src={`/images/group/${img.filename}`}
                 alt={img.description}
                 width={400}
                 height={300}

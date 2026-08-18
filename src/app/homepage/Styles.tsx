@@ -51,7 +51,7 @@ const Title = styled.h2`
   ${FontVariant.title_lg}
   display: grid;
 
-  /* Orange bar above title */
+  /* Accent bar above title */
   &:before {
     content: '';
     justify-self: left;

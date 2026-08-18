@@ -80,6 +80,7 @@ const SubCategoryTitle = styled.h2`
 `
 
 const labPositions = LabPositions // change this if you want to re-order the sections in the page.
+const hasAlumni = Object.keys(ALUMNI_MEMBERS_BY_POSITION).length > 0
 
 export default function Page() {
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({})
@@ -117,15 +118,16 @@ export default function Page() {
               )
             )
           })}
-          <Section
-            id="alumni"
-            key="alumni"
-            ref={el => {
-              sectionRefs.current['alumni'] = el
-            }}
-          >
-            <SectionTitle id="alumni">Alumni</SectionTitle>
-            {LabPositions.map(position => {
+          {hasAlumni && (
+            <Section
+              id="alumni"
+              key="alumni"
+              ref={el => {
+                sectionRefs.current['alumni'] = el
+              }}
+            >
+              <SectionTitle id="alumni">Alumni</SectionTitle>
+              {LabPositions.map(position => {
               // group Visiting Researchers and Past Researchers together under "Past Researcher"
               if (position === 'Past Researcher') {
                 return null
@@ -183,15 +185,16 @@ export default function Page() {
                   </React.Fragment>
                 )
               )
-            })}
-          </Section>
+              })}
+            </Section>
+          )}
         </Sections>
       </main>
       <SideContainer>
         <Sidebar
           sidebarList={[
             ...labPositions.filter(position => position !== 'Past Researcher').map(position => startCase(position)),
-            'alumni',
+            ...(hasAlumni ? ['alumni'] : []),
           ]}
           sectionRefs={sectionRefs}
         />

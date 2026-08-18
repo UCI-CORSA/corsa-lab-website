@@ -10,5 +10,5 @@ export class GroupPhoto {
   }
 }
 
-// TODO: add real CORSA Lab group photos here once available
+// TODO: add real CORSA Lab group photos here once available (place image files in public/images/group/)
 export const GROUPPHOTOS: GroupPhoto[] = [] as const satisfies GroupPhoto[]

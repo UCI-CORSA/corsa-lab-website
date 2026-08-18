@@ -105,15 +105,23 @@ export const NewsCard = ({ post, setModalContent, labelsOnLeft: labelsOnLeft }: 
       <PostContainer>
         <CategoryContainer labelsOnLeft={labelsOnLeft}>
           {post.categories.map((category, i) => (
-            <Category key={i} style={{ backgroundColor: expired ? Color.gray400 : categoryColors[category] }}>
+            <Category
+              key={i}
+              style={{
+                backgroundColor: expired ? Color.gray400 : categoryColors[category],
+                // gray400 is too light for white text to meet 4.5:1 contrast, so switch to dark text when expired
+                color: expired ? Color.gray900 : Color.white,
+              }}
+            >
               {category}
             </Category>
           ))}
           {expired !== undefined &&
             (expired ? (
-              <Category style={{ backgroundColor: Color.gray400 }}>Closed</Category>
+              <Category style={{ backgroundColor: Color.gray400, color: Color.gray900 }}>Closed</Category>
             ) : (
-              <Category style={{ backgroundColor: Color.green300 }}>Open</Category>
+              // #39833C (darkened from green300 #4CAF50) so white text meets 4.5:1 contrast
+              <Category style={{ backgroundColor: '#39833C' }}>Open</Category>
             ))}
         </CategoryContainer>
         <Title>{post.title}</Title>
