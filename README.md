@@ -13,7 +13,7 @@ Run the following commands:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Lalalander5212/corsa-lab-revamp.git
+   git clone https://github.com/UCI-CORSA/corsa-lab-revamp.git
    ```
 
 2. Install dependencies and set up type checkers and linters:
@@ -54,7 +54,7 @@ Please avoid committing directly to the `main` branch. Instead, create a separat
    git push
    ```
 
-4. Go to the [Corsa Lab website repository](https://github.com/Lalalander5212/corsa-lab-revamp) and create a new Pull Request for your branch.
+4. Go to the [Corsa Lab website repository](https://github.com/UCI-CORSA/corsa-lab-revamp) and create a new Pull Request for your branch.
 
 5. After review, the changes can be merged into `main`.
 
@@ -62,7 +62,7 @@ Please avoid committing directly to the `main` branch. Instead, create a separat
 
 1. Go to `src/data/members.ts`.
 
-2. Add a new entry anywhere in `MEMBERS` (position in the array doesn't matter — the site automatically sorts members by position, then end date, then name). Follow the format indicated in `interface Props`.
+2. Add a new entry anywhere in `MEMBERS`. Follow the format indicated in `interface Props`.
 
 3. Use the key format `[firstName][lastName]`, without middle names or aliases.
 
