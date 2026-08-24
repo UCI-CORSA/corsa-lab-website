@@ -17,15 +17,12 @@ export type Period = {
   endYear?: number
 }
 
-export type ProfileModeKey = 'CHRISTMAS' | 'CHILDREN' | 'APRIL-FOOLS' | 'HANBOK'
-
 interface Props {
   firstName: string
   lastName: string
   email?: string
   position: LabPositionTypes // must exactly match one of LabPositions above: 'Faculty' | 'Ph.D. Student' | 'M.S. Student' | 'Visiting Researcher' | 'Past Researcher' | 'Undergraduate Student'
   img?: string
-  hoverImg?: Partial<Record<ProfileModeKey, string>>
   site?: string
   msThesis?: string
   phdThesis?: string

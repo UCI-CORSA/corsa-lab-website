@@ -1,9 +1,9 @@
 'use client'
 import { ScreenSize, linearlyScaleSize } from '@/app/theme'
-import { MemberCard, CurrentMode } from '@/components/MemberCard'
+import { MemberCard } from '@/components/MemberCard'
 import { Section, SectionTitle, Sections } from '@/components/Section'
 import { Sidebar } from '@/components/SideBar'
-import { MEMBERS } from '@/data/members'
+import { MEMBERS, Member } from '@/data/members'
 import styled from '@emotion/styled'
 import React, { useRef } from 'react'
 
@@ -62,7 +62,7 @@ const SideContainer = styled.div`
   }
 `
 
-const WEB_TEAM_MEMBERS = [MEMBERS.saptarshimitra, MEMBERS.donghyeokpark]
+const WEB_TEAM_MEMBERS: Member[] = [MEMBERS.saptarshimitra, MEMBERS.donghyeokpark]
 
 export default function Page() {
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({})
@@ -84,7 +84,6 @@ export default function Page() {
                 <MemberCard
                   key={member.email ?? `${member.firstName}-${member.lastName}`}
                   member={member}
-                  mode={CurrentMode}
                 />
               ))}
             </SectionContent>

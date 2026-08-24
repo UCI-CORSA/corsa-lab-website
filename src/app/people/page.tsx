@@ -2,7 +2,7 @@
 import { FontVariant, ScreenSize, linearlyScaleSize } from '@/app/theme'
 import { AlumniCard } from '@/components/AlumniCard'
 import { Divider } from '@/components/Divider'
-import { MemberCard, CurrentMode } from '@/components/MemberCard'
+import { MemberCard } from '@/components/MemberCard'
 import { Section, SectionTitle, Sections } from '@/components/Section'
 import { Sidebar } from '@/components/SideBar'
 import { ALUMNI_MEMBERS_BY_POSITION, CURRENT_MEMBERS_BY_POSITION, LabPositions } from '@/data/members'
@@ -108,7 +108,6 @@ export default function Page() {
                         <MemberCard
                           key={member.email ?? `${member.firstName}-${member.lastName}`}
                           member={member}
-                          mode={CurrentMode}
                         />
                       ))}
                     </SectionContent>
