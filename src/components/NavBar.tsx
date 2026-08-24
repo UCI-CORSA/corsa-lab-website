@@ -172,8 +172,10 @@ const NavList = [
   { navItem: 'Home', path: '/' },
   { navItem: 'People', path: '/people' },
   { navItem: 'Publications', path: '/publications' },
+  { navItem: 'Courses', path: '/courses' },
   { navItem: 'Research', path: '/research' },
   { navItem: 'News', path: '/news' },
+  { navItem: 'WebTeam', path: '/webteam' },
 ]
 
 export const NavBar = () => {

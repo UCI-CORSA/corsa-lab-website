@@ -116,6 +116,21 @@ Please avoid committing directly to the `main` branch. Instead, create a separat
 
    To introduce a brand-new research topic (not just tag a paper with an existing one), add a new entry to `ResearchTopics` itself (with an emoji and label). It will then automatically show up in the Publications page filter and the homepage's "Research Themes" section — no other changes needed.
 
+### Courses
+
+1. Go to `src/data/courses.ts`.
+2. Add a new entry to `COURSES`. Follow the format indicated in `interface Props`.
+3. Courses are displayed in the order they appear in the array.
+4. In the `editions` field, list each past offering as a `{ semester, url }` pair (e.g. `{ semester: 'Spring 2024', url: 'https://...' }`), with the most recent semester listed first.
+5. Note: the `image` field is currently unused by the Courses page.
+
+### Gallery
+
+1. Go to `src/data/groupPhotos.ts`.
+2. Add a new entry to `GROUPPHOTOS`. Follow the format indicated in `interface Props`.
+3. Place the image inside `public/images/group/` and make sure the filename exactly matches the value entered in the `filename` field, including the file extension.
+4. The **first** entry in `GROUPPHOTOS` is featured on the homepage hero (clicking it opens the full gallery), so keep the most recent photo at the top of the array.
+
 ### Research
 
 1. Go to `src/data/research.ts`.

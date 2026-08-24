@@ -39,7 +39,9 @@ const FooterLogoContainer = styled.div`
 
 const FooterBottom = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
   margin-top: 24px;
   padding-top: 16px;
   border-top: 1px solid ${Color.gray800};
@@ -86,10 +88,15 @@ export const Footer = () => {
         </FooterLogoContainer>
       </FooterTop>
       <FooterBottom>
-        Design from{' '}
-        <FooterCreditLink href="https://www.kixlab.org/" target="_blank" rel="noopener noreferrer">
-          Kixlab
-        </FooterCreditLink>
+        <span>
+          Design from{' '}
+          <FooterCreditLink href="https://www.kixlab.org/" target="_blank" rel="noopener noreferrer">
+            Kixlab
+          </FooterCreditLink>
+        </span>
+        <span>
+          Maintained by the CORSA Lab <FooterCreditLink href="/webteam">WebTeam</FooterCreditLink>
+        </span>
       </FooterBottom>
     </FooterContainer>
   )

@@ -2,7 +2,10 @@
 import { Color, ScreenSize, linearlyScaleSize, FontVariant } from '@/app/theme'
 import styled from '@emotion/styled'
 import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { Section } from './Styles'
+import { GROUPPHOTOS } from '@/data/groupPhotos'
 
 const HeroContainer = styled.div`
   display: flex;
@@ -90,13 +93,9 @@ const HeroImageContainer = styled.div`
   flex-basis: 50%;
   position: relative;
   z-index: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: ${Color.gray200};
-  color: ${Color.blue900};
-  ${FontVariant.title_xl}
-  font-weight: 700;
+  overflow: hidden;
+  background: ${Color.gray100};
+
   @media (max-width: ${ScreenSize.md}) {
     // TODO: Set the min-height more systematically. This is a temporary fix.
     min-height: 30vh;
@@ -132,8 +131,18 @@ export const HeroSection = () => {
             <ContactLink href="mailto:sitaoh@uci.edu">sitaoh@uci.edu</ContactLink>).
           </HeroContact>
         </HeroTextArea>
-        {/* TODO: replace with a real CORSA Lab group photo once one is available */}
-        <HeroImageContainer id="hero-image-container">CORSA</HeroImageContainer>
+        <HeroImageContainer id="hero-image-container">
+          <Link href="/gallery">
+            <Image
+              id="hero-image"
+              src={`/images/group/${GROUPPHOTOS[0].filename}`}
+              alt="CORSA Lab group picture"
+              fill
+              priority
+              style={{ position: 'absolute', objectFit: 'contain', width: '100%', height: '100%' }}
+            />
+          </Link>
+        </HeroImageContainer>
       </HeroContainer>
     </Section>
   )

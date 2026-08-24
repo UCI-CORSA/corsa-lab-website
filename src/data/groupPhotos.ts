@@ -10,5 +10,13 @@ export class GroupPhoto {
   }
 }
 
-// TODO: add real CORSA Lab group photos here once available (place image files in public/images/group/)
-export const GROUPPHOTOS: GroupPhoto[] = [] as const satisfies GroupPhoto[]
+export const GROUPPHOTOS: GroupPhoto[] = [
+  {
+    filename: 'group_2023_jun.jpg',
+    description: 'June, 2023',
+  },
+  {
+    filename: 'group_2022_sep.jpg',
+    description: 'September, 2022',
+  },
+] as const satisfies GroupPhoto[]
