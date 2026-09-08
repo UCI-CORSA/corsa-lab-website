@@ -101,6 +101,12 @@ const HeroImageContainer = styled.div`
     min-height: 30vh;
   }
 `
+
+const HeroImageLink = styled(Link)`
+  display: block;
+  position: absolute;
+  inset: 0;
+`
 export const HeroSection = () => {
   return (
     <Section id="hero-section" style={{ padding: '0' }}>
@@ -111,7 +117,9 @@ export const HeroSection = () => {
             WELCOME TO <span style={{ color: `${Color.blue900}`, paddingRight: '7px' }}>CORSA LAB</span>!
           </HeroTitle>
           <HeroSubtitle>
-            <strong style={{ fontWeight: '700' }}>Compiler Optimizations, Reconfigurable and Scalable Architectures</strong>
+            <strong style={{ fontWeight: '700' }}>
+              Compiler Optimizations, Reconfigurable and Scalable Architectures
+            </strong>
           </HeroSubtitle>
           <HeroMessage>
             We are a group of passionate researchers at EECS, School of Engineering, UC Irvine, working on exciting
@@ -120,11 +128,11 @@ export const HeroSection = () => {
           <HeroMessage>
             We focus on the development of highly efficient and user-friendly hardware acceleration systems. Our core
             areas of expertise encompass the design of cutting-edge programming languages and compilers tailored for
-            hardware accelerators, as well as the envisioning of next-generation computer architectures.
-            Additionally, we are committed to exploring and implementing highly efficient machine learning algorithms
-            and model compression techniques. Moreover, our research extends to innovative hardware-aware neural
-            architecture search and the integration of hardware/software co-design flow. Through these pursuits, we
-            aim to advance the frontiers of technology and contribute to the advancement of the field.
+            hardware accelerators, as well as the envisioning of next-generation computer architectures. Additionally,
+            we are committed to exploring and implementing highly efficient machine learning algorithms and model
+            compression techniques. Moreover, our research extends to innovative hardware-aware neural architecture
+            search and the integration of hardware/software co-design flow. Through these pursuits, we aim to advance
+            the frontiers of technology and contribute to the advancement of the field.
           </HeroMessage>
           <HeroContact>
             If you are interested in opportunities at CORSA Lab, please contact Prof. Sitao Huang (
@@ -132,16 +140,17 @@ export const HeroSection = () => {
           </HeroContact>
         </HeroTextArea>
         <HeroImageContainer id="hero-image-container">
-          <Link href="/gallery">
+          <HeroImageLink href="/gallery">
             <Image
               id="hero-image"
               src={`/images/group/${GROUPPHOTOS[0].filename}`}
               alt="CORSA Lab group picture"
               fill
               priority
+              sizes="(max-width: 768px) 100vw, 50vw"
               style={{ position: 'absolute', objectFit: 'contain', width: '100%', height: '100%' }}
             />
-          </Link>
+          </HeroImageLink>
         </HeroImageContainer>
       </HeroContainer>
     </Section>

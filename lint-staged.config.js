@@ -4,10 +4,10 @@ module.exports = {
 
   // This will lint and format TypeScript and                                             //JavaScript files
   '**/*.(ts|tsx|js)': filenames => [
-    `yarn eslint --cache --fix ${filenames.join(' ')}`,
-    `yarn prettier --cache --write ${filenames.join(' ')}`,
+    `yarn eslint --cache --fix ${filenames.map(f => `"${f}"`).join(' ')}`,
+    `yarn prettier --cache --write ${filenames.map(f => `"${f}"`).join(' ')}`,
   ],
 
   // this will Format MarkDown and JSON
-  '**/*.(md|json)': filenames => `yarn prettier --write ${filenames.join(' ')}`,
+  '**/*.(md|json)': filenames => `yarn prettier --write ${filenames.map(f => `"${f}"`).join(' ')}`,
 }

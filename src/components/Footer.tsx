@@ -89,13 +89,11 @@ export const Footer = () => {
       </FooterTop>
       <FooterBottom>
         <span>
-          Design from{' '}
+          Design adapted from{' '}
           <FooterCreditLink href="https://www.kixlab.org/" target="_blank" rel="noopener noreferrer">
-            Kixlab
-          </FooterCreditLink>
-        </span>
-        <span>
-          Maintained by the CORSA Lab <FooterCreditLink href="/webteam">WebTeam</FooterCreditLink>
+            KIXLAB
+          </FooterCreditLink>{' '}
+          · Maintained by the CORSA Lab <FooterCreditLink href="/webteam">WebTeam</FooterCreditLink>
         </span>
       </FooterBottom>
     </FooterContainer>

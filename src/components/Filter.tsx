@@ -72,8 +72,10 @@ const FilterOption = styled.li`
   display: block;
 `
 
-const FilterOptionButton = styled.button`
-  display: block;
+const FilterOptionButton = styled.button<{ selected: boolean }>`
+  display: flex;
+  align-items: center;
+  gap: 8px;
   width: 100%;
   text-align: left;
   padding: 6px 12px;
@@ -81,7 +83,7 @@ const FilterOptionButton = styled.button`
   text-transform: capitalize;
   background: none;
   border: none;
-  color: inherit;
+  color: ${props => (props.selected ? Color.blue900 : 'inherit')};
   font: inherit;
 
   &:hover,
@@ -90,16 +92,21 @@ const FilterOptionButton = styled.button`
   }
 `
 
+const OptionCheckbox = styled.input`
+  margin: 0;
+  cursor: pointer;
+`
+
 interface Props {
   filterName: string
   optionSet: string[]
-  optionSelected: string
-  handleOptionChange: (topic: string) => void
+  optionsSelected: string[]
+  handleOptionsChange: (options: string[]) => void
 }
 
-const isOptionExist = (optionSelected: string) => optionSelected !== 'All'
+const isFiltered = (optionsSelected: string[]) => optionsSelected.length > 0
 
-export const Filter = ({ filterName, optionSet, optionSelected, handleOptionChange }: Props) => {
+export const Filter = ({ filterName, optionSet, optionsSelected, handleOptionsChange }: Props) => {
   const [optionOpen, setOptionOpen] = useState(false)
   const toggleList = () => setOptionOpen(prev => !prev)
 
@@ -111,45 +118,49 @@ export const Filter = ({ filterName, optionSet, optionSelected, handleOptionChan
     }
   }
 
+  const toggleOption = (option: string) => {
+    if (option === 'All') {
+      handleOptionsChange([])
+      return
+    }
+    handleOptionsChange(
+      optionsSelected.includes(option) ? optionsSelected.filter(o => o !== option) : [...optionsSelected, option]
+    )
+  }
+
+  const displayValue = isFiltered(optionsSelected) ? optionsSelected.join(', ') : 'All'
+
   return (
     <Select>
-      <SelectName filtered={isOptionExist(optionSelected)}>{filterName}</SelectName>
+      <SelectName filtered={isFiltered(optionsSelected)}>{filterName}</SelectName>
       <SelectBody onBlur={handleContainerBlur}>
         <Value
           type="button"
-          filtered={isOptionExist(optionSelected)}
+          filtered={isFiltered(optionsSelected)}
           onClick={toggleList}
           aria-haspopup="listbox"
           aria-expanded={optionOpen}
         >
-          {optionSelected}
+          {displayValue}
           {optionOpen ? (
-            <IoChevronUpOutline
-              size={20}
-              color={`${isOptionExist(optionSelected) ? Color.blue900 : Color.gray700}`}
-            />
+            <IoChevronUpOutline size={20} color={`${isFiltered(optionsSelected) ? Color.blue900 : Color.gray700}`} />
           ) : (
-            <IoChevronDownOutline
-              size={20}
-              color={`${isOptionExist(optionSelected) ? Color.blue900 : Color.gray700}`}
-            />
+            <IoChevronDownOutline size={20} color={`${isFiltered(optionsSelected) ? Color.blue900 : Color.gray700}`} />
           )}
         </Value>
         {optionOpen && (
           <OptList role="listbox">
-            {optionSet.map(topic => (
-              <FilterOption key={topic} role="option" aria-selected={topic === optionSelected}>
-                <FilterOptionButton
-                  type="button"
-                  onClick={() => {
-                    handleOptionChange(topic)
-                    toggleList()
-                  }}
-                >
-                  {topic}
-                </FilterOptionButton>
-              </FilterOption>
-            ))}
+            {optionSet.map(topic => {
+              const selected = topic === 'All' ? !isFiltered(optionsSelected) : optionsSelected.includes(topic)
+              return (
+                <FilterOption key={topic} role="option" aria-selected={selected}>
+                  <FilterOptionButton type="button" selected={selected} onClick={() => toggleOption(topic)}>
+                    <OptionCheckbox type="checkbox" checked={selected} readOnly tabIndex={-1} />
+                    {topic}
+                  </FilterOptionButton>
+                </FilterOption>
+              )
+            })}
           </OptList>
         )}
       </SelectBody>

@@ -6,12 +6,12 @@ import { Filter } from '@/components/Filter'
 import { PublicationCard } from '@/components/Publication/PublicationCard'
 import { Section, SectionContent, SectionTitle, Sections } from '@/components/Section'
 import { Sidebar } from '@/components/SideBar'
-import type { PublicationType, ResearchTopicType } from '@/data/publications'
+import type { ResearchTopicType } from '@/data/publications'
 import { PREPRINTS, PUBLICATIONS_BY_YEAR, Publication, PublicationTypes, ResearchTopics } from '@/data/publications'
 import styled from '@emotion/styled'
-import { capitalize, startCase } from 'lodash'
+import { startCase } from 'lodash'
 import { useRouter, useSearchParams } from 'next/navigation'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 
 const Container = styled.div`
   display: flex;
@@ -83,28 +83,32 @@ const sortSections = (sections: string[]) => {
   })
 }
 
+const parseListParam = (value: string | null) => (value ? value.split(',').filter(Boolean) : [])
+
 export default function Page() {
   const router = useRouter()
   const params = useSearchParams()
-  const researchTopic = (params.get('researchTopic') as ResearchTopicType | null) ?? 'All'
-  const publicationType = capitalize((params.get('publicationType') as PublicationType | null) ?? 'All')
+  const researchTopicParam = params.get('researchTopic')
+  const publicationTypeParam = params.get('publicationType')
+  const researchTopics = useMemo(() => parseListParam(researchTopicParam), [researchTopicParam])
+  const publicationTypes = useMemo(() => parseListParam(publicationTypeParam), [publicationTypeParam])
   const [publicationList, setPublicationList] = useState<Record<string, Publication[]>>(PUBLICATIONS_BY_SECTION)
   const [sectionList, setSectionList] = useState<string[]>(sortSections(Object.keys(PUBLICATIONS_BY_SECTION)))
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({})
 
-  const handleResearchTopicChange = (topic: string) => {
-    router.push(`/publications/?researchTopic=${topic}&publicationType=${publicationType}`)
+  const handleResearchTopicsChange = (topics: string[]) => {
+    router.push(`/publications/?researchTopic=${topics.join(',')}&publicationType=${publicationTypes.join(',')}`)
   }
-  const handlePublicationTypeChange = (type: string) => {
-    router.push(`/publications/?researchTopic=${researchTopic}&publicationType=${type}`)
+  const handlePublicationTypesChange = (types: string[]) => {
+    router.push(`/publications/?researchTopic=${researchTopics.join(',')}&publicationType=${types.join(',')}`)
   }
   useEffect(() => {
     const filteredList: Record<string, Publication[]> = Object.entries(PUBLICATIONS_BY_SECTION).reduce(
       (acc, [year, publications]) => {
         const filteredPublications = publications.filter(
           pub =>
-            (researchTopic === 'All' || pub.topics.includes(researchTopic)) &&
-            (publicationType === 'All' || pub.type === publicationType)
+            researchTopics.every(topic => pub.topics.includes(topic as ResearchTopicType)) &&
+            (publicationTypes.length === 0 || publicationTypes.includes(pub.type))
         )
         if (filteredPublications.length > 0) {
           acc[year] = filteredPublications
@@ -115,7 +119,7 @@ export default function Page() {
     )
 
     setPublicationList(filteredList)
-  }, [researchTopic, publicationType])
+  }, [researchTopics, publicationTypes])
   useEffect(() => {
     setSectionList(sortSections(Object.keys(publicationList)))
   }, [publicationList])
@@ -128,14 +132,14 @@ export default function Page() {
           <Filter
             filterName="Research Topic"
             optionSet={['All', ...Object.keys(ResearchTopics)]}
-            optionSelected={researchTopic}
-            handleOptionChange={handleResearchTopicChange}
+            optionsSelected={researchTopics}
+            handleOptionsChange={handleResearchTopicsChange}
           />
           <Filter
             filterName="Publication Type"
             optionSet={['All', ...PublicationTypes]}
-            optionSelected={publicationType}
-            handleOptionChange={handlePublicationTypeChange}
+            optionsSelected={publicationTypes}
+            handleOptionsChange={handlePublicationTypesChange}
           />
         </Filters>
         <Sections>
