@@ -1,4 +1,4 @@
-const basePath = process.env.NODE_ENV === 'production' ? '/corsa-lab-revamp' : ''
+const basePath = process.env.NODE_ENV === 'production' ? '/corsa-lab-website' : ''
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
