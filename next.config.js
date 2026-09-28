@@ -1,6 +1,4 @@
-// On GitHub Actions, serve from /<repo-name> so the same config works for any fork/mirror's Pages site
-const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? 'corsa-lab-revamp'
-const basePath = process.env.NODE_ENV === 'production' ? `/${repoName}` : ''
+const basePath = process.env.NODE_ENV === 'production' ? '/corsa-lab-revamp' : ''
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
