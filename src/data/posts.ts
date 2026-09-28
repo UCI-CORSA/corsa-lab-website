@@ -6,7 +6,7 @@ interface Props {
   contentMdFilePath?: string // Add path to markdown file if exists. Path should be relative to /public/posts/
   endsAt?: Date // Add if the post has a deadline
 }
-
+// temp
 export interface Post extends Props {}
 export class Post {
   constructor(attrs: Props) {
