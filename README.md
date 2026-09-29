@@ -1,21 +1,13 @@
-# Corsa Lab Website
+# CORSA Lab Website
 
-Temporary repo for corsa lab website demo
+Repository for the redesigned [CORSA Lab](https://corsa.eng.uci.edu/) website, live at https://uci-corsa.github.io.
 
-Repository for the redesigned [Corsa Lab](https://corsa.eng.uci.edu/) website.
-
-This website is based on and adapted from the [KIXLAB website](https://www.kixlab.org/) and its public source code, with permission from KIXLAB.
-
-# How to Contribute
-
-## Initializing & Running the Repo
-
-Run the following commands:
+## Getting Started
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/UCI-CORSA/corsa-lab-revamp.git
+   git clone https://github.com/UCI-CORSA/uci-corsa.github.io.git
    ```
 
 2. Install dependencies and set up type checkers and linters:
@@ -32,9 +24,9 @@ Run the following commands:
    yarn dev
    ```
 
-## Adding Content / Creating Pull Requests
+## Contributing Workflow
 
-Please avoid committing directly to the `main` branch. Instead, create a separate branch and submit a Pull Request (PR).
+The `main` branch is protected: only repository and organization admins can push to it or merge into it. Everyone else makes changes on a separate branch and submits a Pull Request (PR), which an admin reviews and merges.
 
 1. Create a new branch from `main`:
 
@@ -42,7 +34,18 @@ Please avoid committing directly to the `main` branch. Instead, create a separat
    git checkout -b my-branch-name
    ```
 
-2. Add and commit your changes:
+2. Make your changes (see [Adding Content](#adding-content)), then run the same checks the CI runs on every PR, plus a production build:
+
+   ```bash
+   yarn type-check
+   yarn lint
+   yarn style-check
+   yarn build
+   ```
+
+   If `style-check` reports formatting issues, run `yarn format` to fix them automatically.
+
+3. Add and commit your changes:
 
    ```bash
    git status
@@ -50,15 +53,21 @@ Please avoid committing directly to the `main` branch. Instead, create a separat
    git commit -m "Describe your changes here"
    ```
 
-3. Push your branch:
+4. Push your branch:
 
    ```bash
-   git push
+   git push -u origin my-branch-name
    ```
 
-4. Go to the [Corsa Lab website repository](https://github.com/UCI-CORSA/corsa-lab-revamp) and create a new Pull Request for your branch.
+5. Go to the [CORSA Lab website repository](https://github.com/UCI-CORSA/uci-corsa.github.io) and create a new Pull Request for your branch.
 
-5. After review, the changes can be merged into `main`.
+6. After review, an admin merges the PR into `main`, and the site is deployed automatically (see [Deployment](#deployment)).
+
+## Adding Content
+
+All content lives in data files under `src/data/` and assets under `public/`. The sections below describe each page.
+
+**Images:** use JPG or PNG files. Avoid HEIC (the default iPhone photo format), since Chrome and Firefox cannot display it. Keep file sizes small (ideally under 500 KB) so pages load quickly.
 
 ### People
 
@@ -74,11 +83,21 @@ Please avoid committing directly to the `main` branch. Instead, create a separat
    John David Smith -> johnsmith
    ```
 
-4. For the profile picture, use an image with a 1:1 aspect ratio, consistent with the existing member images. A suggested size is 500x500 px.
+4. Set `position` to exactly one of the values in `LabPositions`: `'Faculty'`, `'Ph.D. Student'`, `'M.S. Student'`, `'Visiting Researcher'`, `'Past Researcher'`, or `'Undergraduate Student'`.
 
-5. Place the image inside `public/members/` and make sure the filename exactly matches the value entered in the `img` field in `members.ts`, including the file extension.
+5. For the profile picture, use an image with a 1:1 aspect ratio, consistent with the existing member images. A suggested size is 500x500 px.
 
-6. To add a former member instead of a current one, also set the following fields so they show up under "Alumni" instead of their `position` section:
+6. Place the image inside `public/members/` and make sure the filename exactly matches the value entered in the `img` field in `members.ts`, including the file extension. Members without a photo show a default image, and members with a photo are listed first within their position.
+
+7. Links on the member card are optional. Each button appears only when its field is filled in; leave the field out (or empty) to hide the button:
+
+   ```typescript
+   email: 'netid@uci.edu', // email button
+   site: 'https://example.com/', // personal website button
+   linkedin: 'https://www.linkedin.com/in/username/', // LinkedIn button, shown to the right of the website button
+   ```
+
+8. To add a former member instead of a current one, also set the following fields so they show up under "Alumni" instead of their `position` section:
 
    ```typescript
    isAlumni: true,
@@ -86,6 +105,8 @@ Please avoid committing directly to the `main` branch. Instead, create a separat
    endSeason: 'Spring', // season they left: 'Winter' | 'Spring' | 'Summer' | 'Fall'
    currentPosition: 'Software Engineer at Google', // shown on their alumni card
    ```
+
+   The Alumni section appears automatically once at least one member has `isAlumni: true`. Alumni are grouped by position; Visiting Researchers and Past Researchers are listed together under "Past Researcher".
 
 ### News
 
@@ -100,13 +121,13 @@ Please avoid committing directly to the `main` branch. Instead, create a separat
 
 2. Add a new entry at the top of `PUBLICATIONS`. Follow the format indicated in `interface Props`.
 
-3. In the `authors` field, Corsa Lab members should be referenced as:
+3. In the `authors` field, CORSA Lab members should be referenced as:
 
    ```typescript
    MEMBERS.firstnamelastname
    ```
 
-   This ensures that Corsa Lab members are displayed prominently among the authors.
+   This ensures that CORSA Lab members are displayed prominently among the authors.
 
 4. For co-authors or authors with equal contribution, group them into an array within the `authors` field. Asterisks will appear next to their names to indicate equal contribution.
 
@@ -146,10 +167,29 @@ Each project appears as a card on the Projects page (`/projects`), and each card
    ![Alt text](/images/projects/my_figure.png 'Caption shown under the figure')
    ```
 
+## Deployment
+
+The site is deployed to GitHub Pages at https://uci-corsa.github.io.
+
+- Every push to `main` (including a merged Pull Request) triggers the **Deploy to GitHub Pages** workflow (`.github/workflows/deploy.yml`), which builds the site and publishes it automatically. There is no manual deploy step.
+- The update usually goes live within a few minutes. Check progress in the repository's **Actions** tab; if the workflow fails, the live site keeps showing the previous version.
+- The site is a static export served from the root of the domain, which only works because the repository is named `uci-corsa.github.io`. If the repository is renamed, update `basePath` in `next.config.js` to match the new URL path.
+
 ## Development
+
+| Command            | What it does                                                 |
+| ------------------ | ------------------------------------------------------------ |
+| `yarn dev`         | Starts a local development server at http://localhost:3000   |
+| `yarn build`       | Builds the static site into `out/`, the same way deploys do  |
+| `yarn type-check`  | Checks for TypeScript errors                                 |
+| `yarn lint`        | Checks for ESLint errors (`yarn lint:fix` fixes what it can) |
+| `yarn style-check` | Checks Prettier formatting                                   |
+| `yarn format`      | Reformats all files with Prettier                            |
+
+Every Pull Request runs `type-check`, `lint`, and `style-check` in CI (`.github/workflows/ci.yml`). CI does not run `build`, so run it locally before opening a PR to catch problems that only show up when pages are generated, such as a project whose Markdown file is missing.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Noto Sans, a Google Font.
 
 ## Attribution
 
-The design and codebase of this website were adapted from the [KIXLAB website](https://www.kixlab.org/) and its public GitHub repository, with permission from KIXLAB.
+The design and codebase of this website were adapted from the [KIXLAB website](https://www.kixlab.org/) and its [public GitHub repository](https://github.com/kixlab/website), with permission from KIXLAB.

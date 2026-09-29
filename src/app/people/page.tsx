@@ -105,10 +105,7 @@ export default function Page() {
                     <SectionTitle>{position}</SectionTitle>
                     <SectionContent>
                       {CURRENT_MEMBERS_BY_POSITION[position].map(member => (
-                        <MemberCard
-                          key={member.email ?? `${member.firstName}-${member.lastName}`}
-                          member={member}
-                        />
+                        <MemberCard key={member.email ?? `${member.firstName}-${member.lastName}`} member={member} />
                       ))}
                     </SectionContent>
                   </Section>
@@ -127,63 +124,63 @@ export default function Page() {
             >
               <SectionTitle id="alumni">Alumni</SectionTitle>
               {LabPositions.map(position => {
-              // group Visiting Researchers and Past Researchers together under "Past Researcher"
-              if (position === 'Past Researcher') {
-                return null
-              }
-              if (position === 'Visiting Researcher') {
-                const visitingResearchers = ALUMNI_MEMBERS_BY_POSITION['Visiting Researcher'] || []
-                const pastMembers = ALUMNI_MEMBERS_BY_POSITION['Past Researcher'] || []
-                const combined = [...visitingResearchers, ...pastMembers]
-                if (combined.length > 0) {
-                  combined.sort((a, b) => {
-                    const aIsAlumni = a.isAlumni ?? false
-                    const bIsAlumni = b.isAlumni ?? false
-                    const aEndYear = aIsAlumni ? a.endYear ?? a.startYear ?? 3000 : 3000
-                    const bEndYear = bIsAlumni ? b.endYear ?? b.startYear ?? 3000 : 3000
-                    const aEndSeason = aIsAlumni ? a.endSeason ?? a.startSeason ?? 'Winter' : 'Winter'
-                    const bEndSeason = bIsAlumni ? b.endSeason ?? b.startSeason ?? 'Winter' : 'Winter'
-                    if (aEndYear !== bEndYear) {
-                      return bEndYear - aEndYear
-                    }
-                    const seasonA = ['Fall', 'Summer', 'Spring', 'Winter'].indexOf(aEndSeason)
-                    const seasonB = ['Fall', 'Summer', 'Spring', 'Winter'].indexOf(bEndSeason)
-                    if (seasonA !== seasonB) {
-                      return seasonA - seasonB
-                    }
-                    if (a.lastName === b.lastName) {
-                      return a.firstName.localeCompare(b.firstName)
-                    }
-                    return a.lastName.localeCompare(b.lastName)
-                  })
-                  return (
-                    <React.Fragment key="Past Researcher">
-                      <SubCategoryTitle>Past Researcher</SubCategoryTitle>
+                // group Visiting Researchers and Past Researchers together under "Past Researcher"
+                if (position === 'Past Researcher') {
+                  return null
+                }
+                if (position === 'Visiting Researcher') {
+                  const visitingResearchers = ALUMNI_MEMBERS_BY_POSITION['Visiting Researcher'] || []
+                  const pastMembers = ALUMNI_MEMBERS_BY_POSITION['Past Researcher'] || []
+                  const combined = [...visitingResearchers, ...pastMembers]
+                  if (combined.length > 0) {
+                    combined.sort((a, b) => {
+                      const aIsAlumni = a.isAlumni ?? false
+                      const bIsAlumni = b.isAlumni ?? false
+                      const aEndYear = aIsAlumni ? a.endYear ?? a.startYear ?? 3000 : 3000
+                      const bEndYear = bIsAlumni ? b.endYear ?? b.startYear ?? 3000 : 3000
+                      const aEndSeason = aIsAlumni ? a.endSeason ?? a.startSeason ?? 'Winter' : 'Winter'
+                      const bEndSeason = bIsAlumni ? b.endSeason ?? b.startSeason ?? 'Winter' : 'Winter'
+                      if (aEndYear !== bEndYear) {
+                        return bEndYear - aEndYear
+                      }
+                      const seasonA = ['Fall', 'Summer', 'Spring', 'Winter'].indexOf(aEndSeason)
+                      const seasonB = ['Fall', 'Summer', 'Spring', 'Winter'].indexOf(bEndSeason)
+                      if (seasonA !== seasonB) {
+                        return seasonA - seasonB
+                      }
+                      if (a.lastName === b.lastName) {
+                        return a.firstName.localeCompare(b.firstName)
+                      }
+                      return a.lastName.localeCompare(b.lastName)
+                    })
+                    return (
+                      <React.Fragment key="Past Researcher">
+                        <SubCategoryTitle>Past Researcher</SubCategoryTitle>
+                        <AlumniSectionContent>
+                          {combined.map((alumnus, i) => (
+                            <AlumniCard key={i} mem={alumnus} showRole={true} />
+                          ))}
+                        </AlumniSectionContent>
+                      </React.Fragment>
+                    )
+                  }
+                  return null
+                }
+
+                return (
+                  ALUMNI_MEMBERS_BY_POSITION[position] &&
+                  ALUMNI_MEMBERS_BY_POSITION[position].length > 0 && (
+                    <React.Fragment key={position}>
+                      <SubCategoryTitle>{position}</SubCategoryTitle>
                       <AlumniSectionContent>
-                        {combined.map((alumnus, i) => (
-                          <AlumniCard key={i} mem={alumnus} showRole={true} />
+                        {ALUMNI_MEMBERS_BY_POSITION[position].map((alumnus, i) => (
+                          // TODO: populate alumni data with email field and use email as key
+                          <AlumniCard key={i} mem={alumnus} />
                         ))}
                       </AlumniSectionContent>
                     </React.Fragment>
                   )
-                }
-                return null
-              }
-
-              return (
-                ALUMNI_MEMBERS_BY_POSITION[position] &&
-                ALUMNI_MEMBERS_BY_POSITION[position].length > 0 && (
-                  <React.Fragment key={position}>
-                    <SubCategoryTitle>{position}</SubCategoryTitle>
-                    <AlumniSectionContent>
-                      {ALUMNI_MEMBERS_BY_POSITION[position].map((alumnus, i) => (
-                        // TODO: populate alumni data with email field and use email as key
-                        <AlumniCard key={i} mem={alumnus} />
-                      ))}
-                    </AlumniSectionContent>
-                  </React.Fragment>
                 )
-              )
               })}
             </Section>
           )}

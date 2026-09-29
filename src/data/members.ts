@@ -72,7 +72,7 @@ export const MEMBERS = {
     position: 'Ph.D. Student',
     img: 'hongzheng_tian.jpg',
     site: 'https://hongzhengtian.com/',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/hongzhengtian/',
   },
   yeqiao: {
     firstName: 'Ye',
@@ -114,7 +114,7 @@ export const MEMBERS = {
     position: 'Ph.D. Student',
     img: 'saptarshi_mitra.jpg',
     site: 'https://sapmitra.github.io/',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/mitrasaptarshi/',
   },
   zhihengchen: {
     firstName: 'Zhiheng',
