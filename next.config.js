@@ -1,4 +1,5 @@
-const basePath = process.env.NODE_ENV === 'production' ? '/corsa-lab-website' : ''
+// Deployed as the org site at https://uci-corsa.github.io, so no path prefix is needed
+const basePath = ''
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

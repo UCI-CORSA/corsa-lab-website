@@ -176,7 +176,6 @@ const NavList = [
   { navItem: 'Courses', path: '/courses' },
   { navItem: 'Research', path: '/research' },
   { navItem: 'News', path: '/news' },
-  { navItem: 'WebTeam', path: '/webteam' },
   { navItem: 'Gallery', path: '/gallery' },
 ]
 
@@ -220,7 +219,13 @@ export const NavBar = () => {
       <NavContainer>
         <Nav>
           <Logo href="/">
-            <LogoImage src={withBasePath('/images/corsa_logo.png')} alt="CORSA Lab" width={215} height={93} priority />
+            <LogoImage
+              src={withBasePath('/images/corsa-lab-logo-short.png')}
+              alt="CORSA Lab"
+              width={696}
+              height={313}
+              priority
+            />
           </Logo>
 
           <NavRow>

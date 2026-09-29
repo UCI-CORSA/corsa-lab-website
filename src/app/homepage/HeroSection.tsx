@@ -49,16 +49,6 @@ const HeroTitle = styled.h1`
   }
 `
 
-const HeroSubtitle = styled.h2`
-  font-size: 1.375rem;
-  font-weight: 300;
-  margin-bottom: 8px;
-
-  @media (max-width: ${ScreenSize.md}) {
-    align-self: center;
-    text-align: center;
-  }
-`
 const HeroMessage = styled.p`
   ${FontVariant.body_md}
   color: ${Color.gray700};
@@ -68,16 +58,6 @@ const HeroMessage = styled.p`
   strong {
     font-weight: 700;
   }
-  @media (max-width: ${ScreenSize.md}) {
-    text-align: center;
-  }
-`
-
-const HeroContact = styled.p`
-  ${FontVariant.body_md}
-  color: ${Color.gray700};
-  text-align: left;
-  max-width: 100%;
   @media (max-width: ${ScreenSize.md}) {
     text-align: center;
   }
@@ -120,11 +100,6 @@ export const HeroSection = () => {
           <HeroTitle>
             WELCOME TO <span style={{ color: `${Color.blue900}`, paddingRight: '7px' }}>CORSA LAB</span>!
           </HeroTitle>
-          <HeroSubtitle>
-            <strong style={{ fontWeight: '700' }}>
-              Compiler Optimizations, Reconfigurable and Scalable Architectures
-            </strong>
-          </HeroSubtitle>
           <HeroMessage>
             We are a group of passionate researchers at UC Irvine, working on exciting research projects related to{' '}
             <strong>“CORSA”</strong>: <strong>C</strong>ompiler <strong>O</strong>ptimizations, <strong>R</strong>
@@ -137,10 +112,6 @@ export const HeroSection = () => {
             programming languages and compilers tailored for hardware accelerators, next-generation heterogeneous
             computer systems, as well as efficient hardware-friendly machine learning algorithms and systems.
           </HeroMessage>
-          <HeroContact>
-            If you are interested in learning more about CORSA Lab, please contact Prof. Sitao Huang (
-            <ContactLink href="mailto:sitaoh@uci.edu">sitaoh@uci.edu</ContactLink>).
-          </HeroContact>
         </HeroTextArea>
         <HeroImageContainer id="hero-image-container">
           <HeroImageLink href="/gallery">
@@ -151,7 +122,7 @@ export const HeroSection = () => {
               fill
               priority
               sizes="(max-width: 768px) 100vw, 50vw"
-              style={{ position: 'absolute', objectFit: 'contain', width: '100%', height: '100%' }}
+              style={{ position: 'absolute', objectFit: 'cover', width: '100%', height: '100%' }}
             />
           </HeroImageLink>
         </HeroImageContainer>
