@@ -24,6 +24,7 @@ interface Props {
   position: LabPositionTypes // must exactly match one of LabPositions above: 'Faculty' | 'Ph.D. Student' | 'M.S. Student' | 'Visiting Researcher' | 'Past Researcher' | 'Undergraduate Student'
   img?: string
   site?: string
+  linkedin?: string
   msThesis?: string
   phdThesis?: string
   // TODO: combine startYear and startSeason into a single Date field: startDate
@@ -52,60 +53,75 @@ export const MEMBERS = {
     position: 'Faculty',
     currentPosition: 'Assistant Professor, Lab Director',
     img: 'sitao_2025_square.jpg',
+    site: 'https://sitaohuang.com/',
+    linkedin: 'https://www.linkedin.com/in/sitao-huang-17679b79/',
   },
   haochengxu: {
     firstName: 'Haocheng',
     lastName: 'Xu',
     email: 'haochx5@uci.edu',
     position: 'Ph.D. Student',
+    img: 'haocheng_xu.jpg',
     site: 'https://haochengx.github.io/',
+    linkedin: 'https://www.linkedin.com/in/haocheng-xu-96ab76244/',
   },
   hongzhengtian: {
     firstName: 'Hongzheng',
     lastName: 'Tian',
     email: 'hongzhet@uci.edu',
     position: 'Ph.D. Student',
-    site: 'https://www.hongzhengtian.com/',
+    img: 'hongzheng_tian.jpg',
+    site: 'https://hongzhengtian.com/',
+    linkedin: '',
   },
   yeqiao: {
     firstName: 'Ye',
     lastName: 'Qiao',
     email: 'yeq6@uci.edu',
     position: 'Ph.D. Student',
+    img: 'ye_qiao.jpg',
     site: 'https://sites.uci.edu/yeqiao/',
+    linkedin: 'https://www.linkedin.com/in/ye-qiao',
   },
   yifanzhang: {
     firstName: 'Yifan',
     lastName: 'Zhang',
     email: 'yifanz58@uci.edu',
     position: 'Ph.D. Student',
-    site: 'https://www.linkedin.com/in/yifan-zhang-45697a21a/',
+    img: 'yifan_zhang.jpg',
+    site: 'https://scholar.google.com/citations?user=GbvSVUcAAAAJ&hl=en',
+    linkedin: 'https://www.linkedin.com/in/yifan-zhang-45697a21a/',
   },
   rachidkarami: {
     firstName: 'Rachid',
     lastName: 'Karami',
     email: 'karamir@uci.edu',
     position: 'Ph.D. Student',
-    site: 'https://www.linkedin.com/in/rachid-karami/',
+    linkedin: 'https://www.linkedin.com/in/rachidfkarami/',
   },
   faraztahmasebi: {
     firstName: 'Faraz',
     lastName: 'Tahmasebi',
     email: 'tahmasef@uci.edu',
     position: 'Ph.D. Student',
-    site: 'https://www.linkedin.com/in/faraz-tahmasebi-84804768/',
+    img: 'faraz_tahmasebi.jpg',
+    linkedin: 'https://www.linkedin.com/in/faraz-tahmasebi/',
   },
   saptarshimitra: {
     firstName: 'Saptarshi',
     lastName: 'Mitra',
-    email: 'saptarm@uci.edu',
+    email: 'saptarshi14mitra@gmail.com',
     position: 'Ph.D. Student',
+    img: 'saptarshi_mitra.jpg',
     site: 'https://sapmitra.github.io/',
+    linkedin: '',
   },
   zhihengchen: {
     firstName: 'Zhiheng',
     lastName: 'Chen',
-    position: 'M.S. Student',
+    email: 'zhihenc5@uci.edu',
+    position: 'Ph.D. Student',
+    linkedin: 'https://www.linkedin.com/in/zhiheng-leo-chen-a44216294/',
   },
   venkateshreddykadasani: {
     firstName: 'Venkatesh Reddy',
@@ -201,7 +217,12 @@ const categorizeByPosition = (members: Record<string, Member>): Record<LabPositi
         return seasonA - seasonB // Winter first, then Fall, Summer, Spring
       }
 
-      // Rule 3: If endYear and endSeason are the same, sort by name
+      // Rule 3: Members with a photo come before those without
+      if (!!a.img !== !!b.img) {
+        return a.img ? -1 : 1
+      }
+
+      // Rule 4: Otherwise, sort by name
       if (a.lastName === b.lastName) {
         return a.firstName.localeCompare(b.firstName)
       }

@@ -82,6 +82,16 @@ const EmailButton = IconButton
 const WebsiteButton = IconButton
 const ThesisButton = IconButton
 
+// The LinkedIn logo carries its own brand-colored background, so it fills the button without the gray circle.
+const LinkedInButton = styled(IconButton)`
+  background-color: transparent;
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+`
+
 interface Props {
   member: Member
 }
@@ -127,6 +137,16 @@ export const MemberCard = ({ member }: Props) => {
             >
               <img src={withBasePath('/images/website.svg')} alt="" />
             </WebsiteButton>
+          )}
+          {member.linkedin && (
+            <LinkedInButton
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${member.firstName} ${member.lastName}'s LinkedIn`}
+            >
+              <img src={withBasePath('/images/linkedin.avif')} alt="" />
+            </LinkedInButton>
           )}
           {member.msThesis && (
             <ThesisButton href={member.msThesis} aria-label={`${member.firstName} ${member.lastName}'s M.S. thesis`}>
