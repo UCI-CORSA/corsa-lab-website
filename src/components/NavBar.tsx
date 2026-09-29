@@ -174,7 +174,7 @@ const NavList = [
   { navItem: 'People', path: '/people' },
   { navItem: 'Publications', path: '/publications' },
   { navItem: 'Courses', path: '/courses' },
-  { navItem: 'Research', path: '/research' },
+  { navItem: 'Projects', path: '/projects' },
   { navItem: 'News', path: '/news' },
   { navItem: 'Gallery', path: '/gallery' },
 ]

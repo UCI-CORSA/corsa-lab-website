@@ -172,6 +172,8 @@ export const MEMBERS = {
     firstName: 'DongHyeok',
     lastName: 'Park',
     position: 'Undergraduate Student',
+    img: 'donghyeok_park.jpg',
+    linkedin: 'https://www.linkedin.com/in/donghyeok-park-254664268/',
   },
 } as const satisfies Record<string, Member>
 

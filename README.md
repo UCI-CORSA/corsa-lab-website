@@ -1,4 +1,5 @@
 # Corsa Lab Website
+
 Temporary repo for corsa lab website demo
 
 Repository for the redesigned [Corsa Lab](https://corsa.eng.uci.edu/) website.
@@ -132,11 +133,18 @@ Please avoid committing directly to the `main` branch. Instead, create a separat
 3. Place the image inside `public/images/group/` and make sure the filename exactly matches the value entered in the `filename` field, including the file extension.
 4. The **first** entry in `GROUPPHOTOS` is featured on the homepage hero (clicking it opens the full gallery), so keep the most recent photo at the top of the array.
 
-### Research
+### Projects
 
-1. Go to `src/data/research.ts`.
-2. Add a new entry to `RESEARCH_PROJECTS`. Follow the format indicated in `interface Props`.
-3. Place the project image inside `public/images/research/` and make sure the filename exactly matches the `image` field.
+Each project appears as a card on the Projects page (`/projects`), and each card links to the project's own page (`/projects/<slug>`).
+
+1. Go to `src/data/projects.ts`.
+2. Add a new entry to `PROJECTS`. Follow the format indicated in `interface Props`. The `slug` becomes the page URL, so use lowercase letters, numbers, and hyphens only (e.g. `pylog`).
+3. Place the project image inside `public/images/projects/` and make sure the filename exactly matches the `image` field. This image is used on the card and at the top of the project page.
+4. (Optional) For a longer write-up, create a `.md` file in `public/projects/` and enter its filename in the `contentMdFilePath` field. Without it, the project page shows only the title, description, and image. See `public/projects/pylog.md` for an example.
+5. To add figures in the Markdown file, place them inside `public/images/projects/` and reference them with an absolute path. The optional title in quotes is shown as the caption:
+   ```md
+   ![Alt text](/images/projects/my_figure.png 'Caption shown under the figure')
+   ```
 
 ## Development
 
