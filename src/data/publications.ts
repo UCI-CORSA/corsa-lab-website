@@ -46,6 +46,16 @@ export class Publication {
 export const PUBLICATIONS: Publication[] = [
   {
     title:
+      'PD-Swap: Prefill-Decode Logic Swapping for End-to-End LLM Inference on Edge FPGAs via Dynamic Partial Reconfiguration',
+    authors: [MEMBERS.yifanzhang, MEMBERS.zhihengchen, MEMBERS.yeqiao, MEMBERS.sitaohuang],
+    venue: 'DAC',
+    year: 2026,
+    topics: ['fpga', 'dnn-accelerators'],
+    type: 'Conference',
+    links: [{ url: 'https://arxiv.org/pdf/2512.11550', type: PublicationLinkType.PDF }],
+  },
+  {
+    title:
       'Characterizing State Space Model (SSM) and SSM-Transformer Hybrid Language Model Performance with Long Context Length',
     authors: [MEMBERS.saptarshimitra, MEMBERS.rachidkarami, MEMBERS.haochengxu, MEMBERS.sitaohuang, 'Hyoukjun Kwon'],
     venue: 'ISPASS',
