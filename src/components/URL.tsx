@@ -42,6 +42,13 @@ export const URL = styled(Link)`
     height: 16px;
   }
 
+  &[href*='github.com']::before {
+    content: url('${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/images/github_logo.svg');
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+  }
+
   &[href$='.pdf']::before {
     content: url('${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/images/pdf_icon.svg');
     display: in-line-block;
