@@ -58,6 +58,7 @@ export const MEMBERS = {
     linkedin: 'https://www.linkedin.com/in/sitao-huang-17679b79/',
   },
   haochengxu: {
+    joinedDate: '2022-01-01',
     firstName: 'Haocheng',
     lastName: 'Xu',
     email: 'haochx5@uci.edu',
@@ -67,6 +68,7 @@ export const MEMBERS = {
     linkedin: 'https://www.linkedin.com/in/haocheng-xu-96ab76244/',
   },
   hongzhengtian: {
+    joinedDate: '2022-01-01',
     firstName: 'Hongzheng',
     lastName: 'Tian',
     email: 'hongzhet@uci.edu',
@@ -76,6 +78,7 @@ export const MEMBERS = {
     linkedin: 'https://www.linkedin.com/in/hongzhengtian/',
   },
   yeqiao: {
+    joinedDate: '2022-01-01',
     firstName: 'Ye',
     lastName: 'Qiao',
     email: 'yeq6@uci.edu',
@@ -85,6 +88,7 @@ export const MEMBERS = {
     linkedin: 'https://www.linkedin.com/in/ye-qiao',
   },
   yifanzhang: {
+    joinedDate: '2023-01-01',
     firstName: 'Yifan',
     lastName: 'Zhang',
     email: 'yifanz58@uci.edu',
@@ -94,6 +98,7 @@ export const MEMBERS = {
     linkedin: 'https://www.linkedin.com/in/yifan-zhang-45697a21a/',
   },
   rachidkarami: {
+    joinedDate: '2022-01-01',
     firstName: 'Rachid',
     lastName: 'Karami',
     email: 'karamir@uci.edu',
@@ -101,6 +106,7 @@ export const MEMBERS = {
     linkedin: 'https://www.linkedin.com/in/rachidfkarami/',
   },
   faraztahmasebi: {
+    joinedDate: '2023-01-01',
     firstName: 'Faraz',
     lastName: 'Tahmasebi',
     email: 'tahmasef@uci.edu',
@@ -109,6 +115,7 @@ export const MEMBERS = {
     linkedin: 'https://www.linkedin.com/in/faraz-tahmasebi/',
   },
   saptarshimitra: {
+    joinedDate: '2024-01-01',
     firstName: 'Saptarshi',
     lastName: 'Mitra',
     email: 'saptarshi14mitra@gmail.com',
@@ -118,6 +125,7 @@ export const MEMBERS = {
     linkedin: 'https://www.linkedin.com/in/mitrasaptarshi/',
   },
   zhihengchen: {
+    joinedDate: '2026-01-01',
     firstName: 'Zhiheng',
     lastName: 'Chen',
     email: 'zhihenc5@uci.edu',
