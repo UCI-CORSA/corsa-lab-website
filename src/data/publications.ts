@@ -9,6 +9,7 @@ export const ResearchTopics = {
   'dnn-accelerators': { emoji: '🧠', label: 'DNN Accelerators' },
   quantization: { emoji: '📉', label: 'Quantization' },
   'heterogeneous-computing': { emoji: '🖥️', label: 'Heterogeneous Computing' },
+  characterization: { emoji: '📊', label: 'Characterization' },
 }
 export type ResearchTopicType = keyof typeof ResearchTopics
 
@@ -21,6 +22,7 @@ export enum PublicationLinkType {
   VID = 'Video',
   TRA = 'Trailer',
   ARX = 'arXiv',
+  COD = 'Code',
 }
 
 interface Props {
@@ -42,6 +44,20 @@ export class Publication {
 }
 
 export const PUBLICATIONS: Publication[] = [
+  {
+    title:
+      'Characterizing State Space Model (SSM) and SSM-Transformer Hybrid Language Model Performance with Long Context Length',
+    authors: [MEMBERS.saptarshimitra, MEMBERS.rachidkarami, MEMBERS.haochengxu, MEMBERS.sitaohuang, 'Hyoukjun Kwon'],
+    venue: 'ISPASS',
+    year: 2026,
+    topics: ['characterization'],
+    type: 'Conference',
+    links: [
+      { url: 'https://arxiv.org/pdf/2507.12442', type: PublicationLinkType.PDF },
+      { url: 'https://github.com/sapmitra/SSM-Scope', type: PublicationLinkType.COD },
+      { url: 'https://sapmitra.github.io/ssm-scope/', type: PublicationLinkType.WEB },
+    ],
+  },
   {
     title: 'PyLog: An Algorithm-Centric Python-based FPGA Programming and Synthesis Flow',
     authors: [MEMBERS.sitaohuang, 'Kun Wu', 'Hyunmin Jeong', 'Chengyue Wang', 'Deming Chen', 'Wen-Mei Hwu'],
