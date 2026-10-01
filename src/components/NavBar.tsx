@@ -6,6 +6,7 @@ import { Color, ScreenSize, linearlyScaleSize } from '@/app/theme'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
+import { FaGithub } from 'react-icons/fa'
 import { withBasePath } from '@/lib/basePath'
 
 interface Props {
@@ -72,6 +73,7 @@ const NavRow = styled.div`
 export const NavUl = styled.ul`
   list-style-type: none;
   display: flex;
+  align-items: center;
   gap: 2vw;
   margin: 0px;
   padding: 0px;
@@ -110,6 +112,23 @@ export const NavItem: React.FC<Props> = ({ children, href, selected }) => (
     {children}
   </Anchor>
 )
+
+// External links sit after the page tabs, set apart by a separator, so they don't read as pages of this site
+const ExternalAnchor = styled.a`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: ${Color.gray700};
+  &:hover {
+    color: ${Color.blue900};
+  }
+`
+
+const NavSeparator = styled.li`
+  width: 1px;
+  height: 22px;
+  background-color: ${Color.gray300};
+`
 
 const DropDownMenu = styled.div`
   position: fixed;
@@ -178,6 +197,7 @@ const NavList = [
   { navItem: 'News', path: '/news' },
   { navItem: 'Gallery', path: '/gallery' },
 ]
+const GITHUB_URL = 'https://github.com/UCI-CORSA'
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -237,6 +257,12 @@ export const NavBar = () => {
                   </NavItem>
                 </li>
               ))}
+              <NavSeparator aria-hidden="true" />
+              <li>
+                <ExternalAnchor href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <FaGithub size={22} />
+                </ExternalAnchor>
+              </li>
             </NavUl>
           </NavRow>
           <HamburgerButton type="checkbox" id="hamburger-checkbox" checked={isOpen} readOnly />
@@ -257,6 +283,11 @@ export const NavBar = () => {
                 </NavItem>
               </li>
             ))}
+            <li>
+              <ExternalAnchor href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </ExternalAnchor>
+            </li>
           </NavUl>
         </DropDownMenu>
       }

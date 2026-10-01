@@ -51,7 +51,7 @@ export const URL = styled(Link)`
 
   &[href$='.pdf']::before {
     content: url('${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/images/pdf_icon.svg');
-    display: in-line-block;
+    display: inline-block;
     width: 11px;
     height: 16px;
     margin-right: 6px;

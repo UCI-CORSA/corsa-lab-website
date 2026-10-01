@@ -31,7 +31,8 @@ export default function GlobalStyles() {
         }
 
         main {
-          max-width: ${ScreenSize.max};
+          /* Capped at 100% so unwrappable content (e.g., a code block) scrolls inside itself instead of widening the page */
+          max-width: min(${ScreenSize.max}, 100%);
           margin: 0 auto;
         }
 

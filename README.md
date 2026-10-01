@@ -87,9 +87,17 @@ All content lives in data files under `src/data/` and assets under `public/`. Th
 
 5. For the profile picture, use an image with a 1:1 aspect ratio, consistent with the existing member images. A suggested size is 500x500 px.
 
-6. Place the image inside `public/members/` and make sure the filename exactly matches the value entered in the `img` field in `members.ts`, including the file extension. Members without a photo show a default image, and members with a photo are listed first within their position.
+6. Place the image inside `public/members/` and make sure the filename exactly matches the value entered in the `img` field in `members.ts`, including the file extension. Members without a photo show a default image.
 
-7. Links on the member card are optional. Each button appears only when its field is filled in; leave the field out (or empty) to hide the button:
+7. Set `joinedDate` to the date the member joined the lab. It is never shown on the website; it only controls the order within each position, with the earliest to join listed first:
+
+   ```typescript
+   joinedDate: '2024-09-23', // 'YYYY-MM-DD'
+   ```
+
+   Members without a `joinedDate` are listed after those who have one, with members who have a photo first and then by last name.
+
+8. Links on the member card are optional. Each button appears only when its field is filled in; leave the field out (or empty) to hide the button:
 
    ```typescript
    email: 'netid@uci.edu', // email button
@@ -97,7 +105,7 @@ All content lives in data files under `src/data/` and assets under `public/`. Th
    linkedin: 'https://www.linkedin.com/in/username/', // LinkedIn button, shown to the right of the website button
    ```
 
-8. To add a former member instead of a current one, also set the following fields so they show up under "Alumni" instead of their `position` section:
+9. To add a former member instead of a current one, also set the following fields so they show up under "Alumni" instead of their `position` section:
 
    ```typescript
    isAlumni: true,
@@ -188,7 +196,7 @@ The site is deployed to GitHub Pages at https://uci-corsa.github.io.
 
 Every Pull Request runs `type-check`, `lint`, and `style-check` in CI (`.github/workflows/ci.yml`). CI does not run `build`, so run it locally before opening a PR to catch problems that only show up when pages are generated, such as a project whose Markdown file is missing.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Noto Sans, a Google Font.
+This project uses [`next/font`](https://nextjs.org/docs/app/getting-started/fonts) to automatically optimize and load Noto Sans, a Google Font.
 
 ## Attribution
 

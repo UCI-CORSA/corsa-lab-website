@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import styled from '@emotion/styled'
 import { FontVariant } from '../theme'
-import Link from 'next/link'
 import { GROUPPHOTOS } from '@/data/groupPhotos'
 import { withBasePath } from '@/lib/basePath'
 
@@ -56,7 +55,8 @@ export default function GalleryPage() {
       <Row>
         {GROUPPHOTOS.map(img => (
           <Col key={img.filename}>
-            <Link href={`/images/group/${img.filename}`} target="_blank" rel="noopener noreferrer">
+            {/* Plain <a>, not next/link: Link would try to prefetch the image as a page and log a 404 */}
+            <a href={withBasePath(`/images/group/${img.filename}`)} target="_blank" rel="noopener noreferrer">
               <StyledImage
                 src={withBasePath(`/images/group/${img.filename}`)}
                 alt={img.description}
@@ -66,7 +66,7 @@ export default function GalleryPage() {
                 sizes="(max-width: 768px) 100vw, 50vw"
                 style={{ objectFit: 'cover', aspectRatio: '8 / 5' }}
               />
-            </Link>
+            </a>
             <ImageSubtitle>{img.description}</ImageSubtitle>
           </Col>
         ))}

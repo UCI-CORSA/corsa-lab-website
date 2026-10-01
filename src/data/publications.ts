@@ -4,11 +4,11 @@ export const PublicationTypes = ['Conference', 'Poster', 'Workshop', 'Journal', 
 export type PublicationType = (typeof PublicationTypes)[number]
 
 export const ResearchTopics = {
-  compiler: { emoji: '🛠️', label: 'Compiler' },
-  fpga: { emoji: '🔌', label: 'FPGA' },
+  compiler: { emoji: '🔧', label: 'Compiler' },
+  fpga: { emoji: '🔲', label: 'FPGA' },
   'dnn-accelerators': { emoji: '🧠', label: 'DNN Accelerators' },
-  quantization: { emoji: '📉', label: 'Quantization' },
-  'heterogeneous-computing': { emoji: '🖥️', label: 'Heterogeneous Computing' },
+  quantization: { emoji: '🔢', label: 'Quantization' },
+  'heterogeneous-computing': { emoji: '🔗', label: 'Heterogeneous Computing' },
   characterization: { emoji: '📊', label: 'Characterization' },
 }
 export type ResearchTopicType = keyof typeof ResearchTopics

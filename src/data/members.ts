@@ -25,17 +25,18 @@ interface Props {
   img?: string
   site?: string
   linkedin?: string
-  msThesis?: string
-  phdThesis?: string
+  msThesis?: string // link to the M.S. thesis: thesis button on the member card, "M.S. Thesis" link on the alumni card
+  phdThesis?: string // link to the Ph.D. thesis: "Ph.D. Thesis" link on the alumni card
   // TODO: combine startYear and startSeason into a single Date field: startDate
-  startYear?: number
+  startYear?: number // with startSeason, shown on the alumni card as the time at the lab (e.g., "Fall 2022 - Spring 2024")
   startSeason?: SeasonType
-  endYear?: number
+  endYear?: number // with endSeason, shown on the alumni card and used to sort alumni (most recently left first)
   endSeason?: SeasonType
-  periods?: Period[] // For representing multiple separate periods (e.g., multiple internships at the lab)
-  isAlumni?: boolean
-  affiliation?: string // the affiliation at the time of being at the lab
-  currentPosition?: string // for alumni
+  periods?: Period[] // For representing multiple separate periods (e.g., multiple internships at the lab); shown on the alumni card instead of startYear/endYear
+  joinedDate?: string // 'YYYY-MM-DD', the date the member joined the lab. Only used for ordering; never displayed on the site.
+  isAlumni?: boolean // true moves the member from their position section to the "Alumni" section
+  affiliation?: string // the affiliation at the time of being at the lab; shown under the name for Visiting Researchers and Undergraduate Students, and on the alumni card
+  currentPosition?: string // shown under the name on the member card (e.g., "Assistant Professor, Lab Director") and as "Now ..." on the alumni card
 }
 
 export interface Member extends Props {}
@@ -216,15 +217,22 @@ const categorizeByPosition = (members: Record<string, Member>): Record<LabPositi
       const seasonA = seasonOrder.indexOf(aEndSeason)
       const seasonB = seasonOrder.indexOf(bEndSeason)
       if (seasonA !== seasonB) {
-        return seasonA - seasonB // Winter first, then Fall, Summer, Spring
+        return seasonA - seasonB // Fall first, then Summer, Spring, Winter (latest in the year first)
       }
 
-      // Rule 3: Members with a photo come before those without
+      // Rule 3: Members who joined the lab earlier come first; members without a joinedDate come last
+      if (a.joinedDate !== b.joinedDate) {
+        if (!a.joinedDate) return 1
+        if (!b.joinedDate) return -1
+        return a.joinedDate.localeCompare(b.joinedDate)
+      }
+
+      // Rule 4: Members with a photo come before those without
       if (!!a.img !== !!b.img) {
         return a.img ? -1 : 1
       }
 
-      // Rule 4: Otherwise, sort by name
+      // Rule 5: Otherwise, sort by name
       if (a.lastName === b.lastName) {
         return a.firstName.localeCompare(b.firstName)
       }

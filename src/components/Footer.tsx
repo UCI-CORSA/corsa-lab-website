@@ -94,7 +94,7 @@ export const Footer = () => {
           <FooterCreditLink href="https://www.kixlab.org/" target="_blank" rel="noopener noreferrer">
             KIXLAB
           </FooterCreditLink>{' '}
-          · Maintained by the CORSA Lab WebTeam
+          · Maintained by the CORSA Lab <FooterCreditLink href="/webteam">WebTeam</FooterCreditLink>
         </span>
       </FooterBottom>
     </FooterContainer>

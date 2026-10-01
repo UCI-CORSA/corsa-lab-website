@@ -103,7 +103,8 @@ export const ResearchThemesSection = () => {
                   {ResearchTopics[topic as ResearchTopicType].label}
                 </ResearchTopicItemTitle>
                 <Text style={{ color: 'gray', paddingBottom: '12px' }}>
-                  <span style={{ fontWeight: 'bold' }}>{stats.numPublications}</span> publications
+                  <span style={{ fontWeight: 'bold' }}>{stats.numPublications}</span>{' '}
+                  {stats.numPublications === 1 ? 'publication' : 'publications'}
                 </Text>
                 <ResearchTopicMembersArea>
                   {stats.authors.slice(0, NUM_VISIBLE).map((member: Member) => (
