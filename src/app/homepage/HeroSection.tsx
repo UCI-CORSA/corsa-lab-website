@@ -36,17 +36,38 @@ const HeroTextArea = styled.div`
 `
 
 const HeroTitle = styled.h1`
-  // TODO: Try to make the responsive font-size more systematic. This is a temporary fix.
-  ${FontVariant.title_xl}
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(32px, 4.5vw, 52px);
   font-weight: 700;
-  letter-spacing: 0.5px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
   margin-bottom: 24px;
   text-align: left;
+  color: ${Color.gray900};
 
   @media (max-width: ${ScreenSize.md}) {
     align-self: center;
     text-align: center;
   }
+`
+
+const HeroTitleAccent = styled.span`
+  display: block;
+  background: linear-gradient(90deg, ${Color.blue900}, ${Color.blue500});
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: ${Color.blue900};
+`
+
+const HeroTitleLead = styled.span`
+  display: block;
+  font-size: 0.5em;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: ${Color.gray700};
+  margin-bottom: 8px;
 `
 
 const HeroMessage = styled.p`
@@ -98,7 +119,8 @@ export const HeroSection = () => {
       <HeroContainer>
         <HeroTextArea id="hero-text-area">
           <HeroTitle>
-            WELCOME TO <span style={{ color: `${Color.blue900}`, paddingRight: '7px' }}>CORSA LAB</span>!
+            <HeroTitleLead>Welcome to</HeroTitleLead>
+            <HeroTitleAccent>CORSA Lab</HeroTitleAccent>
           </HeroTitle>
           <HeroMessage>
             We are a group of passionate researchers at UC Irvine, working on exciting research projects related to{' '}
