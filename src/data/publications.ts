@@ -3,13 +3,14 @@ import { MEMBERS, Member } from './members'
 export const PublicationTypes = ['Conference', 'Poster', 'Workshop', 'Journal', 'Preprint'] as const
 export type PublicationType = (typeof PublicationTypes)[number]
 
+// `icon` is a file name under public/images/topics/
 export const ResearchTopics = {
-  compiler: { emoji: '🔧', label: 'Compiler' },
-  fpga: { emoji: '🔲', label: 'FPGA' },
-  'dnn-accelerators': { emoji: '🧠', label: 'DNN Accelerators' },
-  quantization: { emoji: '🔢', label: 'Quantization' },
-  'heterogeneous-computing': { emoji: '🔗', label: 'Heterogeneous Computing' },
-  characterization: { emoji: '📊', label: 'Characterization' },
+  compiler: { icon: 'compiler.svg', label: 'Compiler' },
+  fpga: { icon: 'fpga.svg', label: 'FPGA' },
+  'dnn-accelerators': { icon: 'dnn-accelerators.svg', label: 'DNN Accelerators' },
+  quantization: { icon: 'quantization.svg', label: 'Quantization' },
+  'heterogeneous-computing': { icon: 'heterogeneous-computing.svg', label: 'Heterogeneous Computing' },
+  characterization: { icon: 'characterization.svg', label: 'Characterization' },
 }
 export type ResearchTopicType = keyof typeof ResearchTopics
 

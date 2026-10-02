@@ -14,9 +14,12 @@ const ResearchTopicsArea = styled.div`
   display: grid;
   gap: 48px;
   grid-template-columns: repeat(auto-fit, minmax(min(330px, 46%), 1fr)); // empirically, this works well
+  grid-auto-rows: 1fr; // every row matches the tallest one (e.g. a two-line title)
 `
 
 const ResearchTopicItem = styled.div`
+  height: 100%;
+  box-sizing: border-box;
   padding: 24px 36px;
   min-width: 300px;
   border: thin solid ${Color.gray500};
@@ -30,6 +33,11 @@ const ResearchTopicItem = styled.div`
 
 const ResearchTopicItemTitle = styled.h3`
   ${FontVariant.title_md}
+`
+
+const ResearchTopicIcon = styled(Image)`
+  display: block;
+  margin-bottom: 8px;
 `
 
 const ResearchTopicMembersArea = styled.div`
@@ -98,8 +106,13 @@ export const ResearchThemesSection = () => {
             >
               <ResearchTopicItem key={topic}>
                 <ResearchTopicItemTitle>
-                  {ResearchTopics[topic as ResearchTopicType].emoji}
-                  <br />
+                  <ResearchTopicIcon
+                    width={44}
+                    height={44}
+                    src={withBasePath(`/images/topics/${ResearchTopics[topic as ResearchTopicType].icon}`)}
+                    alt=""
+                    aria-hidden
+                  />
                   {ResearchTopics[topic as ResearchTopicType].label}
                 </ResearchTopicItemTitle>
                 <Text style={{ color: 'gray', paddingBottom: '12px' }}>

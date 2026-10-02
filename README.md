@@ -145,7 +145,7 @@ All content lives in data files under `src/data/` and assets under `public/`. Th
    topics: ['compiler', 'fpga']
    ```
 
-   To introduce a brand-new research topic (not just tag a paper with an existing one), add a new entry to `ResearchTopics` itself (with an emoji and label). It will then automatically show up in the Publications page filter and the homepage's "Research Themes" section — no other changes needed.
+   To introduce a brand-new research topic (not just tag a paper with an existing one), add a new entry to `ResearchTopics` itself (with an `icon` and `label`), and drop the matching SVG into `public/images/topics/`. `icon` is the file name inside that folder (e.g. `icon: 'compiler.svg'`); icons are drawn on a 48×48 viewBox and rendered at 44px on the homepage. It will then automatically show up in the Publications page filter and the homepage's "Research Themes" section — no other changes needed.
 
 ### Courses
 
