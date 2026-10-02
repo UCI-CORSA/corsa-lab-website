@@ -184,6 +184,13 @@ export const MEMBERS = {
     img: 'donghyeok_park.jpg',
     linkedin: 'https://www.linkedin.com/in/donghyeok-park-254664268/',
   },
+    keonko: {
+    firstName: 'keon',
+    lastName: 'ko',
+    position: 'Undergraduate Student',
+    img: 'keon_ko.jpg',
+    linkedin: 'https://www.linkedin.com/in/keonko/',
+  },
 } as const satisfies Record<string, Member>
 
 export const ALUMNI_MEMBERS = Object.fromEntries(
