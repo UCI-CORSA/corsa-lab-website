@@ -130,6 +130,7 @@ export const MEMBERS = {
     lastName: 'Chen',
     email: 'zhihenc5@uci.edu',
     position: 'Ph.D. Student',
+    img: 'zhiheng_chen.jpg',
     linkedin: 'https://www.linkedin.com/in/zhiheng-leo-chen-a44216294/',
   },
   venkateshreddykadasani: {
@@ -151,6 +152,7 @@ export const MEMBERS = {
     firstName: 'Yu-An',
     lastName: 'Chou',
     position: 'M.S. Student',
+    img: 'yuan_chou.jpg',
   },
   zhenyutang: {
     firstName: 'Zhenyu',
@@ -185,8 +187,8 @@ export const MEMBERS = {
     linkedin: 'https://www.linkedin.com/in/donghyeok-park-254664268/',
   },
     keonko: {
-    firstName: 'keon',
-    lastName: 'ko',
+    firstName: 'Keon',
+    lastName: 'Ko',
     position: 'Undergraduate Student',
     img: 'keon_ko.jpg',
     linkedin: 'https://www.linkedin.com/in/keonko/',
